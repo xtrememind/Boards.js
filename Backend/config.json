@@ -1,0 +1,6 @@
+{
+  "connectionString": "mongodb://mwa-user:mwa-user@ds235768.mlab.com:35768/boards",
+  "secret": "GMF_MWA_JWT_SECRET",
+  "saltLength": 10,
+  "passwordMinLength": 5
+}

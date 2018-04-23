@@ -7,10 +7,18 @@
   },
   "dependencies": {
     "cookie-parser": "~1.4.3",
+    "body-parser": "~1.18.2",
     "debug": "~2.6.9",
     "express": "~4.16.0",
     "http-errors": "~1.6.2",
     "jade": "~1.11.0",
-    "morgan": "~1.9.0"
+    "morgan": "~1.9.0",
+    "express-validator": "^4.3.0",
+    "cors": "^2.8.4",
+    "jsonwebtoken": "^8.1.1",
+    "lodash": "^4.17.5",
+    "mongoose": "^5.0.3",
+    "bcryptjs": "^2.4.3",
+    "q": "^1.5.1"
   }
 }
