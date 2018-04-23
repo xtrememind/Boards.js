@@ -60,3 +60,4 @@ typings/
 # config file
 
 Backend/config.json
+.vscode/
