@@ -3,6 +3,7 @@ const userService = require('../services/user.service');
 const Activity = require('../models/activity');
 
 module.exports = (req, res, next) => {
+    // added this line to stop thie interceptor in case the URL is not in config file
     if (!config.activityUrls) {next();return;}
     const allowIntercept = (req.method === 'POST' || req.method === 'PUT' || req.method === 'DELETE');
     const containsRoute = (config.activityUrls.some(a => a.url === req.originalUrl));
