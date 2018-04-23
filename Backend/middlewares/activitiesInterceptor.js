@@ -72,8 +72,6 @@ module.exports = (req, res, next) => {
         });
 
         activity.save(function (err, doc) {
-            console.log('err', err);
-            console.log('doc', doc);
         });
     }
 }
