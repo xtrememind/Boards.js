@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 var config = require('../config.json');
 
 mongoose.connect(config.connectionString);
-
+//test
 var comment = new mongoose.Schema({
     member: String,
     text: String,
