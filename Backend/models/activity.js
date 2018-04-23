@@ -1,13 +1,15 @@
 var mongoose = require('mongoose');
 var config = require('../config.json');
 
+mongoose.connect(config.connectionString);
+
 var member = new mongoose.Schema({
     name: String,
     email: String
 });
 
 var activitySchema = new mongoose.Schema({
-    object: mongoose.Types.ObjectId(),
+    objectId: String,
     objectType: String,
     member: member,
     action: String,
