@@ -1,0 +1,19 @@
+<div class="dashboard-container">
+  <div *ngFor="let list of data | sortBy : 'position'; let listIndex = index" class="list">
+    <div class="drop-zone title" (drop)="drop(list, 0)" (dragover)="allowDrop($event)">
+      {{list.name}}
+    </div>
+    <div class="drop-zone" *ngFor="let task of list.tasks | sortBy : 'position'; let taskIndex = index" (drop)="drop(list, taskIndex)" (dragover)="allowDrop($event)">
+      <div class="task" draggable="true" (dragstart)="drag(list, task)">{{task.name}} {{task.position}}</div>
+    </div>
+    <div class="drop-zone" (drop)="drop(list, -1)" (dragover)="allowDrop($event)">
+      <button (click)="newTask(list)">Add a card...</button>
+    </div>
+  </div>
+
+  <div class="list">
+    <div class="drop-zone">
+      <button (click)="newList()">Add a list...</button>
+    </div>
+  </div>
+</div>
