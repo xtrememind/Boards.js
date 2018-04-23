@@ -3,14 +3,34 @@ const userService = require('../services/user.service');
 const Activity = require('../models/activity');
 
 module.exports = (req, res, next) => {
+    if(!config.activityUrls){
+        next();
+        return;
+    }
+
     const allowIntercept = (req.method === 'POST' || req.method === 'PUT' || req.method === 'DELETE');
-    const containsRoute = (config.activityUrls.some(a => a.url === req.originalUrl));
+    const containsRoute = (config.activityUrls.some(a => sameUrl(a.url, req.originalUrl)));
 
     if (allowIntercept && containsRoute) {
         intercept(req, res);
     }
 
     next();
+
+    function sameUrl(actUrl, orgUrl) {
+        const act = actUrl.split('/');
+        const org = orgUrl.split('/');
+
+        if (act.length != org.length) return false;
+
+        for (let i = 0; i < org.length; i++) {
+            if (act[i] == org[i]) continue;
+            if (act[i][0] === ':') continue;
+            return false;
+        }
+
+        return true;
+    }
 
     function intercept(req, res) {
         var temp = res.send;
@@ -60,7 +80,7 @@ module.exports = (req, res, next) => {
 
     function saveActivity(arg, actUrl, req, user) {
         const activity = new Activity({
-            objectId: arg._id,
+            object: arg._id,
             objectType: actUrl.objectType,
             member: {
                 _id: user._id,
@@ -71,7 +91,6 @@ module.exports = (req, res, next) => {
             date: new Date()
         });
 
-        activity.save(function (err, doc) {
-        });
+        activity.save(function (err, doc) {});
     }
 }
