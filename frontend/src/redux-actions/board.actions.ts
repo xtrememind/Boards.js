@@ -1,13 +1,12 @@
 import { Injectable } from '@angular/core';
 import { IAppState } from './store/store';
 import { NgRedux } from 'ng2-redux';
-import { Http } from '@angular/http';
 
 @Injectable()
 export class BoardActions {
     static BOARD_GETALL = 'BOARD_GETALL';
 
-    constructor(private ngRedux: NgRedux<IAppState>, private http: Http) { }
+    constructor(private ngRedux: NgRedux<IAppState>) { }
 
     getAll() {
         let board = JSON.parse(localStorage.getItem('board'));

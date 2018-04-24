@@ -1,5 +1,4 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { Http } from '@angular/http';
 import { select } from 'ng2-redux';
 import { Observable } from 'rxjs/Observable';
 import { CardActions } from '../../../redux-actions/card.actions';
@@ -14,7 +13,7 @@ export class BoardComponent implements OnInit {
 
   private movingCard: any;
 
-  constructor(private http: Http, private cardActions: CardActions) { }
+  constructor(private cardActions: CardActions) { }
   ngOnInit() { }
 
   allowDrop(ev) {

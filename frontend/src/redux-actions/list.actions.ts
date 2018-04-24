@@ -1,14 +1,13 @@
 import { Injectable } from '@angular/core';
 import { IAppState } from './store/store';
 import { NgRedux } from 'ng2-redux';
-import { Http } from '@angular/http';
 
 @Injectable()
 export class ListActions {
     static LIST_POST = 'LIST_POST';
     static LIST_PUT = 'LIST_PUT';
 
-    constructor(private ngRedux: NgRedux<IAppState>, private http: Http) { }
+    constructor(private ngRedux: NgRedux<IAppState>) { }
 
     post(list) {
         // post

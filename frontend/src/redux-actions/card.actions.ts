@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { IAppState } from './store/store';
 import { NgRedux } from 'ng2-redux';
-import { Http } from '@angular/http';
 
 @Injectable()
 export class CardActions {
@@ -10,7 +9,7 @@ export class CardActions {
     static CARD_PUT = 'CARD_PUT';
     static CARD_MOVE = 'CARD_MOVE';
 
-    constructor(private ngRedux: NgRedux<IAppState>, private http: Http) { }
+    constructor(private ngRedux: NgRedux<IAppState>) { }
 
     post(card) {
         // post
