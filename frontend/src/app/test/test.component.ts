@@ -9,6 +9,7 @@ import { Http } from '@angular/http';
 export class TestComponent implements OnInit {
 
   lists = [];
+  events = [];
 
   constructor(private http: Http) { }
 

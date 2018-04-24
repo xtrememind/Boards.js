@@ -4,3 +4,8 @@
     (createTask)="createTask($event)"
     (createList)="createList()"
 ></app-dashboard>
+
+
+<ul>
+    <li *ngFor="let event of events"> {{ event }} </li>
+</ul>
