@@ -38,7 +38,6 @@ router.post('/', function(req, res, next) {
 // update team
 router.put('/:id', function(req, res, next) {
     var team = new Team(req.body)
-    team.updateDate = new Date();
     console.log(req.body)
     console.log(team)
 
