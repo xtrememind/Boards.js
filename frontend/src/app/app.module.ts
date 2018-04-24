@@ -1,26 +1,42 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
-
-import { AppComponent } from './app.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { TestComponent } from './test/test.component';
-import { SortByPipe } from './sort-by.pipe';
 import { HttpModule } from '@angular/http';
 
+import { SortByPipe } from './pipes/sort-by.pipe';
+
+import { NgRedux, NgReduxModule } from 'ng2-redux';
+import { IAppState, store } from '../redux-actions/store/store';
+import { BoardActions } from '../redux-actions/board.actions';
+
+import { AppComponent } from './app.component';
+import { BoardComponent } from './components/board/board.component';
+import { TestComponent } from './components/test/test.component';
+import { BoardNewComponent } from './components/board/board-new/board-new.component';
+import { CardActions } from '../redux-actions/card.actions';
+import { ListActions } from '../redux-actions/list.actions';
 
 @NgModule({
   declarations: [
     AppComponent,
-    DashboardComponent,
+    BoardComponent,
     TestComponent,
-    SortByPipe
+    SortByPipe,
+    BoardNewComponent
   ],
   imports: [
     BrowserModule,
-    HttpModule
+    HttpModule,
+    NgReduxModule
   ],
-  providers: [],
+  providers: [
+    BoardActions,
+    ListActions,
+    CardActions
+  ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+  constructor(ngRedux: NgRedux<IAppState>) {
+    ngRedux.provideStore(store);
+  }
+}

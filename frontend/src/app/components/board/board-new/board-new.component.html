@@ -1,0 +1,6 @@
+<div class="board-new" (click)="create()" (focusout)="reset()">
+  <ng-content *ngIf="!createMode"></ng-content>
+  <div *ngIf="createMode">
+    <textarea (keydown.enter)="save($event)" (keydown.esc)="reset()"></textarea>
+  </div>
+</div>
