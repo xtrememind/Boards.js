@@ -1,15 +1,15 @@
-const config = require('../config.json');
+const urls = require('./urls.json');
 const userService = require('../services/user.service');
 const Activity = require('../models/activity');
 
 module.exports = (req, res, next) => {
-    if (!config.activityUrls) {
+    if (!urls) {
         next();
         return;
     }
 
     const allowIntercept = (req.method === 'POST' || req.method === 'PUT' || req.method === 'DELETE');
-    const containsRoute = (config.activityUrls.some(a => sameUrl(a.url, req.originalUrl)));
+    const containsRoute = (urls.some(a => sameUrl(a.url, req.originalUrl)));
 
     if (allowIntercept && containsRoute) {
         intercept(req, res);
@@ -54,7 +54,7 @@ function logActivity(req, res, arg) {
         objectId = argJson._id;
     }
 
-    const actUrl = config.activityUrls.filter(a => sameUrl(a.url, req.originalUrl))[0];
+    const actUrl = urls.filter(a => sameUrl(a.url, req.originalUrl))[0];
 
     getUser(req)
         .then(user => {
