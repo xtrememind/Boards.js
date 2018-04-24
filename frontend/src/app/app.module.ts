@@ -15,6 +15,7 @@ import { BoardNewComponent } from './components/board/board-new/board-new.compon
 import { CardActions } from '../redux-actions/card.actions';
 import { ListActions } from '../redux-actions/list.actions';
 import { ListHeaderComponent } from './components/board/list-header/list-header.component';
+import { BoardCardComponent } from './components/board/board-card/board-card.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { ListHeaderComponent } from './components/board/list-header/list-header.
     TestComponent,
     SortByPipe,
     BoardNewComponent,
-    ListHeaderComponent
+    ListHeaderComponent,
+    BoardCardComponent
   ],
   imports: [
     BrowserModule,

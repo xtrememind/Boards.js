@@ -5,4 +5,5 @@
     cursor: pointer;
     border: 1px solid #0079bf;
     box-shadow: 0 0 2px 0 #0284c6;
+    font-weight: bold;
 }

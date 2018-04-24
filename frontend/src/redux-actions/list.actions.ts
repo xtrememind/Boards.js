@@ -5,17 +5,10 @@ import { Http } from '@angular/http';
 
 @Injectable()
 export class ListActions {
-    static LIST_CREATE = 'LIST_CREATE';
     static LIST_POST = 'LIST_POST';
     static LIST_PUT = 'LIST_PUT';
 
     constructor(private ngRedux: NgRedux<IAppState>, private http: Http) { }
-
-    create() {
-        this.ngRedux.dispatch({
-            type: ListActions.LIST_CREATE
-        });
-    }
 
     post(list) {
         // post
