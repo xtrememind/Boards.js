@@ -11,6 +11,14 @@ export function listReducer(state: IAppState, action): IAppState {
         case ListActions.LIST_PUT:
             // nothing to do
             return state;
+        case ListActions.LIST_DELETE:
+            deleteList(state.board, action.payload);
+            return state;
         default: return null;
+    }
+
+    function deleteList(board, list) {
+        const index = board.lists.indexOf(list);
+        board.lists.splice(index, 1);
     }
 }

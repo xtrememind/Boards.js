@@ -1,9 +1,39 @@
+.list-header div {
+  display: inline-block;
+}
+
+.list-header .list-header-container {
+  width: calc(100% - 27px);
+}
+
+.list-header .list-header-title {
+  padding-left: 5px;
+}
+
+.list-header .action-button {
+  float: right;
+}
+
+.list-header .action-button button {
+  padding: 0;
+  margin: 0;
+  border: none;
+  border-radius: 3px;
+  background-color: transparent;
+  color: #555;
+  width: 25px;
+}
+
+.list-header .action-button button:hover {
+  background-color: #bbb;
+}
+
 .list-header input {
-    width: 250px;
-    padding: 5px;
-    border-radius: 3px;
-    cursor: pointer;
-    border: 1px solid #0079bf;
-    box-shadow: 0 0 2px 0 #0284c6;
-    font-weight: bold;
+  width: 220px;
+  padding: 0 5px 0 5px;
+  border-radius: 3px;
+  cursor: pointer;
+  border: 1px solid #0079bf;
+  box-shadow: 0 0 2px 0 #0284c6;
+  font-weight: bold;
 }
