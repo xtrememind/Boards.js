@@ -10,35 +10,41 @@ export class BoardActions {
     constructor(private ngRedux: NgRedux<IAppState>, private http: Http) { }
 
     getAll() {
-        const fakeBoard = { // board
-            id: 1,
-            name: 'MyTestBoard',
-            lists: [
-                {
-                    id: 2,
-                    name: 'List1',
-                    position: 0,
-                    cards: [
-                        { id: 3, name: 'Card 1' },
-                        { id: 4, name: 'Card 2' },
-                        { id: 5, name: 'Card 3' }
-                    ]
-                },
-                {
-                    id: 6,
-                    name: 'List2',
-                    position: 1,
-                    cards: [
-                        { id: 7, name: 'Card 4' },
-                        { id: 8, name: 'Card 5' }
-                    ]
-                }
-            ]
-        };
+        let board = JSON.parse(localStorage.getItem('board'));
+
+        if (!board) {
+            board = { // board
+                id: 1,
+                name: 'MyTestBoard',
+                lists: [
+                    {
+                        id: 2,
+                        name: 'List1',
+                        position: 0,
+                        cards: [
+                            { id: 3, name: 'Card 1' },
+                            { id: 4, name: 'Card 2' },
+                            { id: 5, name: 'Card 3' }
+                        ]
+                    },
+                    {
+                        id: 6,
+                        name: 'List2',
+                        position: 1,
+                        cards: [
+                            { id: 7, name: 'Card 4' },
+                            { id: 8, name: 'Card 5' }
+                        ]
+                    }
+                ]
+            };
+
+            localStorage.setItem('board', JSON.stringify(board));
+        }
 
         this.ngRedux.dispatch({
             type: BoardActions.BOARD_GETALL,
-            payload: fakeBoard
+            payload: board
         });
     }
 }

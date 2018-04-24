@@ -32,7 +32,6 @@ export class BoardNewComponent implements OnInit {
     });
 
     event.target.value = '';
-    this.reset();
   }
 
   findAction(collectionName) {

@@ -5,35 +5,41 @@ import { Http } from '@angular/http';
 
 @Injectable()
 export class CardActions {
-    static CARD_CREATE = 'CARD_CREATE';
+
     static CARD_POST = 'CARD_POST';
-    static CARD_UPDATE = 'CARD_UPDATE';
     static CARD_PUT = 'CARD_PUT';
+    static CARD_MOVE = 'CARD_MOVE';
 
     constructor(private ngRedux: NgRedux<IAppState>, private http: Http) { }
 
-    create() {
-        this.ngRedux.dispatch({
-            type: CardActions.CARD_CREATE
-        });
-    }
-
     post(card) {
+        // post
+        const result = {
+            id: 1,
+            name: card.name
+        };
+
         this.ngRedux.dispatch({
             type: CardActions.CARD_POST,
-            payload: card
-        });
-    }
-
-    update() {
-        this.ngRedux.dispatch({
-            type: CardActions.CARD_UPDATE
+            payload: {
+                card: result,
+                parent: card.parent
+            }
         });
     }
 
     put(card) {
         this.ngRedux.dispatch({
             type: CardActions.CARD_PUT,
+            payload: card
+        });
+    }
+
+    move(card) {
+        // put
+
+        this.ngRedux.dispatch({
+            type: CardActions.CARD_MOVE,
             payload: card
         });
     }

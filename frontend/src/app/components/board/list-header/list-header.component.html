@@ -1,0 +1,6 @@
+<div class="list-header" (click)="create()" (focusout)="reset()">
+  <div *ngIf="!createMode">{{list.name}}</div>
+  <div *ngIf="createMode">
+    <input type="text" (keydown.enter)="save($event)" (keydown.esc)="reset()" />
+  </div>
+</div>

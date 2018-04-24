@@ -2,6 +2,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Http } from '@angular/http';
 import { select } from 'ng2-redux';
 import { Observable } from 'rxjs/Observable';
+import { CardActions } from '../../../redux-actions/card.actions';
 
 @Component({
   selector: 'app-board',
@@ -11,28 +12,10 @@ import { Observable } from 'rxjs/Observable';
 export class BoardComponent implements OnInit {
   @select('board') public board$: Observable<any>;
 
-  // TODO: This is a test
-  @select('lists') public lists$: Observable<any>;
-  @select('cards') public cards$: Observable<any>;
-
-
-
-
-
   private movingCard: any;
 
-  constructor(private http: Http) { }
-  ngOnInit() {
-
-    this.lists$.subscribe(a => {
-      console.log('list created', a);
-    });
-
-    this.cards$.subscribe(a => {
-      console.log('card created', a);
-    });
-
-  }
+  constructor(private http: Http, private cardActions: CardActions) { }
+  ngOnInit() { }
 
   allowDrop(ev) {
     ev.preventDefault();
@@ -40,32 +23,14 @@ export class BoardComponent implements OnInit {
 
   drag(list, card) {
     this.movingCard = {
-      list: list,
-      card: card
+      card: card,
+      originList: list
     };
   }
 
   drop(list, htmlIdx) {
-    this.removeMovingCard(this.movingCard);
-    this.insertMovingCard(this.movingCard, list, htmlIdx);
-  }
-
-  removeMovingCard(movingCard) {
-    const index = movingCard.list.tasks.indexOf(movingCard.card);
-    movingCard.list.tasks.splice(index, 1);
-  }
-
-  insertMovingCard(movingCard, list, htmlIdx) {
-    if (htmlIdx === -1) {
-      htmlIdx = list.tasks.length;
-    }
-
-    list.tasks.splice(htmlIdx, 0, movingCard.card);
-
-    movingCard.card.position = htmlIdx;
-    // this.cardChanged.emit({
-    //   list: list,
-    //   card: movingCard.card
-    // });
+    this.movingCard.destinationList = list;
+    this.movingCard.position = htmlIdx;
+    this.cardActions.move(this.movingCard);
   }
 }
