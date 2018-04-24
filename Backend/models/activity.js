@@ -7,7 +7,7 @@ var member = new mongoose.Schema({
 });
 
 var activitySchema = new mongoose.Schema({
-    object: mongoose.Types.ObjectId(),
+    object: String,
     objectType: String,
     member: member,
     action: String,
