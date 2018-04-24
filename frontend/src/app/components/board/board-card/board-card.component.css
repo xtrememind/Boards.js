@@ -1,0 +1,8 @@
+.board-card {
+  display: block;
+  width: 250px;
+  background-color: white;
+  padding: 5px;
+  border-radius: 3px;
+  cursor: pointer;
+}

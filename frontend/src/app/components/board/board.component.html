@@ -1,0 +1,29 @@
+<div class="board-container">
+  <div *ngFor="let list of (board$ | async).lists | sortBy : 'position'; let listIndex = index" class="list">
+
+    <div class="drop-zone title" (drop)="drop(list, 0)" (dragover)="allowDrop($event)">
+      <app-list-header [list]="list">
+      </app-list-header>
+    </div>
+
+    <div class="drop-zone" *ngFor="let card of list.cards | sortBy : 'position'; let cardIndex = index" (drop)="drop(list, cardIndex)"
+      (dragover)="allowDrop($event)">
+
+      <div draggable="true" (dragstart)="drag(list, card)">
+        <app-board-card [card]="card"></app-board-card>
+      </div>
+
+    </div>
+
+    <div class="drop-zone" (drop)="drop(list, -1)" (dragover)="allowDrop($event)">
+      <app-board-new [collection]="'cards'" [parent]="list.id">Add a card...</app-board-new>
+    </div>
+
+  </div>
+
+  <div class="list">
+    <div class="drop-zone">
+      <app-board-new [collection]="'lists'" [parent]="(board$ | async).id">Add a list...</app-board-new>
+    </div>
+  </div>
+</div>
