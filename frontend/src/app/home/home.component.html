@@ -1,0 +1,84 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-5"></div>
+    <div class="col-sm-2">
+      <button onclick="document.getElementById('id01').style.display='block'">Log In</button>
+    </div>
+    <div class="col-sm-5"></div>
+  </div>
+  <div class="row">
+    <div class="col-sm-5"></div>
+    <div class="col-sm-2">
+      <button onclick="document.getElementById('id02').style.display='block'">Sign Up</button>
+    </div>
+    <div class="col-sm-5"></div>
+  </div>
+
+</div>
+
+<!-- The Modal -->
+<div id="id01" class="modal">
+  <form class="modal-content animate" (ngSubmit)="onSubmitLogIn()" #formLog="ngForm">
+    <div class="imgcontainer">
+      <img src="/assets/img/img_avatar3.png" alt="Avatar" class="avatar">
+    </div>
+    <div class="container">
+      <label for="uemail">
+        <b>Email</b>
+      </label>
+      <input type="text" placeholder="Enter Email" name="uemail" [(ngModel)]="email" required pattern="[^ @]*@[^ @]*" #uemailS="ngModel"
+      />
+      <div class="text-danger" *ngIf="uemailS.errors && (uemailS.dirty || uemailS.touched)">
+        <p *ngIf="uemailS.errors.required">Email is required</p>
+        <p *ngIf="uemailS.errors.pattern">Email must be valid</p>
+      </div>
+      <label for="psw">
+        <b>Password</b>
+      </label>
+      <input type="password" placeholder="Enter Password" name="psw" [(ngModel)]="password" required #pswS="ngModel" >
+      <div class="text-danger" *ngIf="pswS.errors && (pswS.dirty || pswS.touched)">
+        <p *ngIf="pswS.errors.required">Password is required</p>
+      </div>
+      <button type="submit" [disabled]="formLog.invalid">Login</button>
+      <button type="button" class="cancelbtn" onclick="document.getElementById('id01').style.display='none'" (click)="onCancleLogIn()">Cancel</button>
+    </div>
+  </form>
+</div>
+
+<!-- The Modal (contains the Sign Up form) -->
+<div id="id02" class="modal">
+  <form class="modal-content animate" (ngSubmit)="onSubmitSignUp()" #formSign="ngForm">
+    <div class="container">
+      <h1>Sign Up</h1>
+      <p>Please fill in this form to create an account.</p>
+      <hr>
+      <label for="uname">
+        <b>Name</b>
+      </label>
+      <input type="text" placeholder="Enter Name" name="uname" [(ngModel)]="userName" required #uname="ngModel"/>
+      <div class="text-danger" *ngIf="uname.errors && (uname.dirty || uname.touched)">
+        <p *ngIf="uname.errors.required">Name is required</p>
+      </div>
+      <label for="uemail">
+        <b>Email</b>
+      </label>
+      <input type="text" placeholder="Enter Email" name="uemail" [(ngModel)]="email" required pattern="[^ @]*@[^ @]*" #uemail="ngModel"/>
+      <div class="text-danger" *ngIf="uemail.errors && (uemail.dirty || uemail.touched)">
+        <p *ngIf="uemail.errors.required">Email is required</p>
+        <p *ngIf="uemail.errors.pattern">Email must be valid</p>
+      </div>
+      <label for="psw">
+        <b>Password</b>
+      </label>
+      <input type="password" placeholder="Enter Password" name="psw" required [(ngModel)]="password" required #psw="ngModel" minlength="5">
+      <div class="text-danger" *ngIf="psw.errors && (psw.dirty || psw.touched)">
+        <p *ngIf="psw.errors.required">Password is required</p>
+        <p *ngIf="psw.errors.minlength">Password must be at least 5 characters long</p>
+      </div>
+      <div class="clearfix">
+        <button type="submit" class="signup" [disabled]="formSign.invalid">Sign Up</button>
+        <button type="button" onclick="document.getElementById('id02').style.display='none'" class="cancelbtn" (click)="onCancleSignUp()">Cancel</button>
+      </div>
+    </div>
+  </form>
+</div>
