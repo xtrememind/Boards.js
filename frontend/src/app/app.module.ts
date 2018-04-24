@@ -1,13 +1,18 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpModule } from '@angular/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RoutingModule } from './routing/routing.module';
+import { NgRedux, NgReduxModule } from 'ng2-redux';
+import { HttpClientModule } from '@angular/common/http';
 
 import { SortByPipe } from './pipes/sort-by.pipe';
 
-import { NgRedux, NgReduxModule } from 'ng2-redux';
 import { IAppState, store } from '../redux-actions/store/store';
 import { BoardActions } from '../redux-actions/board.actions';
 
+import {UserService} from './services/user.service';
+
+import { HomeComponent } from './home/home.component';
 import { AppComponent } from './app.component';
 import { BoardComponent } from './components/board/board.component';
 import { TestComponent } from './components/test/test.component';
@@ -25,14 +30,19 @@ import { BoardCardComponent } from './components/board/board-card/board-card.com
     SortByPipe,
     BoardNewComponent,
     ListHeaderComponent,
-    BoardCardComponent
+    BoardCardComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
-    HttpModule,
-    NgReduxModule
+    NgReduxModule,
+    FormsModule,
+    ReactiveFormsModule,
+    RoutingModule,
+    HttpClientModule
   ],
   providers: [
+    UserService,
     BoardActions,
     ListActions,
     CardActions
