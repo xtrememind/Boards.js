@@ -1,3 +1,6 @@
 [
-    { "url": "/users/auth", "objectType": "User" }
+    { "url": "/cards", "objectType": "card" },
+    { "url": "/cards/:id", "objectType": "card" },
+    { "url": "/lists", "objectType": "list" },
+    { "url": "/lists/:id", "objectType": "list" }
 ]
