@@ -16,7 +16,7 @@ var task = new mongoose.Schema({
 
 var checklist = new mongoose.Schema({
     name: String,
-    tasks: task[]
+    tasks: [task]
 });
 
 var member = new mongoose.Schema({
@@ -39,29 +39,29 @@ var card = new mongoose.Schema({
     description: String,
     position: Number,
     dueDate: Date,
-    attachments: attachment[],
-    labels: label[],
-    members: member[],
-    checklists: checklist[],
-    comments: comment[]
+    attachments: [attachment],
+    labels: [label],
+    members: [member],
+    checklists: [checklist],
+    comments: [comment]
 });
 
 var list = new mongoose.Schema({
     name: String,
     position: Number,
-    cards: card[]
+    cards: [card]
 });
 
 
 var board = new mongoose.Schema({
     name: String,
-    lists: list[]
+    lists: [list]
 });
 
 var teamSchema = new mongoose.Schema({
     name: String,
-    members: member[],
-    lists: list[]
+    members: [member],
+    boards:[board]
 });
 
 module.exports = mongoose.model('Team', teamSchema, 'teams');
