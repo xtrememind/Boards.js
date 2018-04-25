@@ -1,6 +1,14 @@
-<div class="list-header" (click)="create()" (focusout)="reset()">
-  <div *ngIf="!createMode">{{list.name}}</div>
-  <div *ngIf="createMode">
-    <input type="text" (keydown.enter)="save($event)" (keydown.esc)="reset()" />
+<div class="list-header">
+  <div (click)="create()" (focusout)="reset()" class="list-header-container">
+    <div *ngIf="!createMode" class="list-header-title">{{list.name}}</div>
+    <div *ngIf="createMode">
+      <input type="text" (keydown.enter)="save($event)" (keydown.esc)="reset()" />
+    </div>
+  </div>
+  <div class="action-button">
+    <mat-menu #menu="matMenu" xPosition="before">
+      <button mat-menu-item (click)="archive()">Archive</button>
+    </mat-menu>
+    <button mat-button [matMenuTriggerFor]="menu">...</button>
   </div>
 </div>

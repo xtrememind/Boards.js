@@ -1,0 +1,20 @@
+.topbar {
+  background-color: #026aa7;
+  height: 40px;
+  padding: 5px 8px 5px 8px;
+}
+
+.center {
+  flex: 1 1 auto;
+  text-align: center;
+}
+
+.center a {
+  color: #80b4d3;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.center a:hover {
+  color: #cce1ed;
+}

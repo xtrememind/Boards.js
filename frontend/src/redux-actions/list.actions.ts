@@ -6,6 +6,7 @@ import { NgRedux } from 'ng2-redux';
 export class ListActions {
     static LIST_POST = 'LIST_POST';
     static LIST_PUT = 'LIST_PUT';
+    static LIST_DELETE = 'LIST_DELETE';
 
     constructor(private ngRedux: NgRedux<IAppState>) { }
 
@@ -30,6 +31,14 @@ export class ListActions {
         // put....
         this.ngRedux.dispatch({
             type: ListActions.LIST_PUT,
+            payload: list
+        });
+    }
+
+    delete(list) {
+        // delete...
+        this.ngRedux.dispatch({
+            type: ListActions.LIST_DELETE,
             payload: list
         });
     }

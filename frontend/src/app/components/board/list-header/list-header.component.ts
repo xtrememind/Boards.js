@@ -28,4 +28,8 @@ export class ListHeaderComponent implements OnInit {
     event.target.value = '';
     this.reset();
   }
+
+  archive() {
+    this.listActions.delete(this.list);
+  }
 }
