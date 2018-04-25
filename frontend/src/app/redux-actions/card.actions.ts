@@ -14,7 +14,8 @@ export class CardActions {
 
     post(card) {
         this.cardService.post(card.parent, {
-            name: card.name
+            name: card.name,
+            position: card.position
         }).subscribe((result: any) => {
             this.ngRedux.dispatch({
                 type: CardActions.CARD_POST,
@@ -22,7 +23,8 @@ export class CardActions {
                     parent: card.parent,
                     card: {
                         _id: result._id,
-                        name: card.name
+                        name: card.name,
+                        position: card.position
                     }
                 }
             });

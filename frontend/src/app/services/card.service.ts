@@ -7,12 +7,11 @@ const httpOptions = {
 
 @Injectable()
 export class CardService {
-  private apiRoot: String = 'http://localhost:3001';
+  private apiRoot: String = 'http://localhost:3001/cards';
 
   constructor(private httpClient: HttpClient) { }
 
   post(listId, card) {
-    return null;
-    // return this.httpClient.put(`${this.apiRoot}/lists/cards/${listId}`, card, httpOptions);
+    return this.httpClient.post(`${this.apiRoot}/${listId}`, card, httpOptions);
   }
 }

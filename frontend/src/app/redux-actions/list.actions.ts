@@ -30,8 +30,10 @@ export class ListActions {
 
     post(list) {
         this.listService.post(list.parent, {
-            name: list.name
+            name: list.name,
+            position: list.position
         }).subscribe((result: any) => {
+            console.log(result);
             this.ngRedux.dispatch({
                 type: ListActions.LIST_POST,
                 payload: {
@@ -39,6 +41,7 @@ export class ListActions {
                     list: {
                         _id: result._id,
                         name: list.name,
+                        position: list.position,
                         cards: []
                     }
                 }
@@ -53,6 +56,10 @@ export class ListActions {
                 payload: list
             });
         });
+    }
+
+    move(movingList) {
+        console.log(`list ${movingList.list._id} changed to ${movingList.position}`);
     }
 
     delete(list) {

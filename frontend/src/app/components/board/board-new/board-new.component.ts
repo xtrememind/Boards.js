@@ -10,6 +10,7 @@ import { ListActions } from '../../../redux-actions/list.actions';
 export class BoardNewComponent implements OnInit {
   createMode: Boolean = false;
 
+  @Input() position: Number;
   @Input() collection: String;
   @Input() parent: String;
 
@@ -28,7 +29,8 @@ export class BoardNewComponent implements OnInit {
     const action = this.findAction(this.collection);
     action.post({
       name: event.target.value,
-      parent: this.parent
+      parent: this.parent,
+      position: this.position
     });
 
     event.target.value = '';
