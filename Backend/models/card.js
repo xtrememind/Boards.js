@@ -27,12 +27,11 @@ var comment = new mongoose.Schema({
 var cardSchema = new mongoose.Schema({
     name: String,
     description: String,
-    position: Number,
     dueDate: Date,
-    attachments: [attachment],
+    // attachments: [attachment],
     labels: [label],
     members: [member],
-    checklists: [string],
+    checklists: [String],
     comments: [comment]
 });
 

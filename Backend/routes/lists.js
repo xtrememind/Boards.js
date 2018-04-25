@@ -41,8 +41,8 @@ router.get('/:id', function(req, res, next) {
 router.post('/:id' /*board ID*/, function(req, res, next) {
 
     delete req.body._id
-    var list = new List(req.body)
-    listService.createList(req.params.id , list)
+    // var list = new List(req.body)
+    listService.createList(req.params.id , req.body)
     .then(function (result) {
         res.json(result);
     })
