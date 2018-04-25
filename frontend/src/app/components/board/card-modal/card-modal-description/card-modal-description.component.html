@@ -1,15 +1,21 @@
 <div class="description">
   <h3>Description</h3>
-  <button>
-    <mat-icon>subject</mat-icon>
-    <span>
-      Edit the description...
-    </span>
-  </button>
-  <div *ngIf="card.description">
-
+  <div *ngIf="!editMode">
+    <button (click)="edit()">
+      <mat-icon>subject</mat-icon>
+      <span>
+        Edit the description...
+      </span>
+    </button>
+    <pre>{{card.description}}</pre>
   </div>
-  <div *ngIf="!card.description">
-
+  <div *ngIf="editMode">
+    <div>
+      <textarea (keydown.esc)="reset()" [(ngModel)]="card.description"></textarea>
+    </div>
+    <div>
+      <button (click)="save()">Save</button>
+      <button (click)="reset()">Cancel</button>
+    </div>
   </div>
 </div>

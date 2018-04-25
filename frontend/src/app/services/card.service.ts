@@ -21,4 +21,12 @@ export class CardService {
   post(listId, card) {
     return this.httpClient.post(`${this.apiRoot}/${listId}`, card, httpOptions);
   }
+
+  changeName(card) {
+    return this.httpClient.put(`${this.apiRoot}/name/${card._id}`, card);
+  }
+
+  changeDescription(card) {
+    return this.httpClient.put(`${this.apiRoot}/description/${card._id}`, card);
+  }
 }

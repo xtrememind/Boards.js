@@ -1,0 +1,9 @@
+<div class="card-modal-title" (click)="edit()" (focusout)="reset()">
+  <mat-icon class="icon" (focusout)="reset()">description</mat-icon>
+  <div *ngIf="!editMode" (focusout)="reset()">
+    {{card.name}}
+  </div>
+  <div *ngIf="editMode" (focusout)="reset()">
+    <input type="text" (keydown.enter)="save($event)" [(ngModel)]="card.name" (focusout)="reset()" />
+  </div>
+</div>
