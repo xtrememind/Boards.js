@@ -16,6 +16,6 @@ export class CardService {
   }
 
   post(listId, card) {
-    return this.httpClient.post(`${this.apiRoot} /${listId}`, card, httpOptions);
+    return this.httpClient.post(`${this.apiRoot}/${listId}`, card, httpOptions);
   }
 }
