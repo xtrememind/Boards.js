@@ -13,8 +13,8 @@ export function cardReducer(state: IAppState, action): IAppState {
         default: return null;
     }
 
-    function addCard(state, action){
-        state.board.lists.filter(l => l.id === action.payload.parent)[0].cards.push(action.payload.card);
+    function addCard(state, action) {
+        state.lists.filter(l => l._id === action.payload.parent)[0].cards.push(action.payload.card);
         return state;
     }
 
@@ -26,7 +26,7 @@ export function cardReducer(state: IAppState, action): IAppState {
             const index = payload.originList.cards.indexOf(payload.card);
             payload.originList.cards.splice(index, 1);
         }
-    
+
         function addCardToList(payload) {
             if (payload.position === -1) {
                 payload.position = payload.destinationList.cards.length;

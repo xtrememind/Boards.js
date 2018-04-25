@@ -13,7 +13,11 @@ export class ListActions {
     constructor(private ngRedux: NgRedux<IAppState>, private listService: ListService) { }
 
     get(id, position) {
-        this.listService.get(id).subscribe(list => {
+        this.listService.get(id).subscribe((list: any) => {
+            if (list.length === 0) {
+                return;
+            }
+
             this.ngRedux.dispatch({
                 type: ListActions.LIST_GET,
                 payload: {
@@ -25,19 +29,20 @@ export class ListActions {
     }
 
     post(list) {
-        // post
-        const result = {
-            id: 1,
-            name: list.name,
-            cards: []
-        };
-
-        this.ngRedux.dispatch({
-            type: ListActions.LIST_POST,
-            payload: {
-                list: result,
-                parent: list.parent
-            }
+        this.listService.post(list.parent, {
+            name: list.name
+        }).subscribe((result: any) => {
+            this.ngRedux.dispatch({
+                type: ListActions.LIST_POST,
+                payload: {
+                    parent: list.parent,
+                    list: {
+                        _id: result._id,
+                        name: list.name,
+                        cards: []
+                    }
+                }
+            });
         });
     }
 
@@ -51,10 +56,11 @@ export class ListActions {
     }
 
     delete(list) {
-        // delete...
-        this.ngRedux.dispatch({
-            type: ListActions.LIST_DELETE,
-            payload: list
+        this.listService.delete(list).subscribe(r => {
+            this.ngRedux.dispatch({
+                type: ListActions.LIST_DELETE,
+                payload: list
+            });
         });
     }
 }

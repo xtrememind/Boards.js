@@ -9,24 +9,25 @@ export function listReducer(state: IAppState, action): IAppState {
             insertList(state, action);
             return state;
         case ListActions.LIST_POST:
-            state.board.lists.push(action.payload.list);
+            state.lists.push(action.payload.list);
             return state;
         case ListActions.LIST_PUT:
             // nothing to do
             return state;
         case ListActions.LIST_DELETE:
-            deleteList(state, action);
+            deleteList(state, action.payload);
             return state;
         default: return null;
     }
 
     function insertList(state, action) {
         if (state.lists.some(l => l.id && l.id === action.payload.id)) {
-            deleteList(state, action);
+            deleteList(state, action.payload.list);
         }
 
         action.payload.list.position = action.payload.position;
         state.lists.push(action.payload.list);
+
         state.lists = state.lists.sort(function (a, b) {
             const x = a.position;
             const y = b.position;
@@ -34,8 +35,8 @@ export function listReducer(state: IAppState, action): IAppState {
         });
     }
 
-    function deleteList(state, action) {
-        const index = state.lists.indexOf(action.payload.list);
+    function deleteList(state, list) {
+        const index = state.lists.indexOf(list);
         state.lists.splice(index, 1);
     }
 }

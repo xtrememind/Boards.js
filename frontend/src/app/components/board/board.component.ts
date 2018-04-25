@@ -12,6 +12,8 @@ export class BoardComponent implements OnInit {
   @select('board') public board$: Observable<any>;
   @select('lists') public lists$: Observable<any>;
 
+  @Input() boardId: any;
+
   private movingCard: any;
 
   constructor(private cardActions: CardActions) { }
@@ -21,14 +23,14 @@ export class BoardComponent implements OnInit {
     ev.preventDefault();
   }
 
-  drag(list, card) {
+  dragCard(list, card) {
     this.movingCard = {
       card: card,
       originList: list
     };
   }
 
-  drop(list, htmlIdx) {
+  dropCard(list, htmlIdx) {
     this.movingCard.destinationList = list;
     this.movingCard.position = htmlIdx;
     this.cardActions.move(this.movingCard);

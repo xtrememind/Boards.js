@@ -39,6 +39,7 @@ import { BoardsPreviewModalComponent } from './components/topbar/boards-preview-
 /** Angular material */
 import { MatMenuModule, MatToolbarModule, MatDialogModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CardService } from './services/card.service';
 
 @NgModule({
   declarations: [
@@ -74,7 +75,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     CardActions,
     AuthGuard,
     BoardService,
-    ListService
+    ListService,
+    CardService
   ],
   entryComponents: [CardModalComponent, BoardsPreviewModalComponent],
   bootstrap: [AppComponent]
