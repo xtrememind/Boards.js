@@ -1,58 +1,139 @@
 var express = require('express');
 var router = express.Router();
 var Team = require('../models/team');
-var userService = require('../services/user.service');
+var teamService = require('../services/teamService');
 
 // get all teams
 router.get('/', function(req, res, next) {
-    Team.find({})
-        .exec(function(err, results) {
-            console.log(results)
-            if (err) res.status(500).send({error_code:1, msg:err});
-            else res.status(200).json(results)
-        })
-});
-
-// find a team
-router.get('/:id', function(req, res, next) {
-    Team.find({_id: req.params.id})
-        .exec(function(err, results) {
-            console.log(results)
-            if (err) res.status(500).send({error_code:1, msg:err});
-            else res.status(200).json(results)
-        })
+    teamService.getTeams()
+    .then(function (teams) {
+        if (teams) {
+            res.status(200).json(teams);
+        } else {
+            res.sendStatus(404);
+        }
+    })
+    .catch(function (err) {
+        console.log(err);
+        res.status(400).send({error_code:1, msg:err});
+    });
 });
 
 //create team
 router.post('/', function(req, res, next) {
     delete req.body._id
     var team = new Team(req.body)
-    console.log(req.body)
-    console.log(team)
-    team.save(function(err) {
-        if (err) res.status(500).send({error_code:1, msg:err});
-        else res.status(200).json({error_code:0, _id: team._id})
+    teamService.createTeam(team)
+    .then(function (result) {
+        res.json(result);
     })
+    .catch(function (err) {
+        console.log(err);
+        res.status(400).send({error_code:1, msg:err});
+    });
 });
 
-// update team
+// update team name
 router.put('/:id', function(req, res, next) {
-    var team = new Team(req.body)
-    console.log(req.body)
-    console.log(team)
+    console.log(req.body);
+    teamService.updateTeamName(req.params.id, req.body.name)
+    .then(function (result) {
+        res.json(result);
+    })
+    .catch(function (err) {
+        console.log(err);
+        res.status(400).send({error_code:1, msg:err});
+    });
 
-    Team.findOneAndUpdate({ _id: req.params.id }, team,  function (err) {
-        if (err) res.status(500).send({error_code:1, msg:err});
-        else res.status(200).json({error_code:0, _id: team._id})
-      });
+});
+
+// add board to a team
+router.put('/boards/:id', function(req, res, next) {
+    console.log(req.body);
+    teamService.addBoard(req.params.id, req.body)
+    .then(function (result) {
+        res.json(result);
+    })
+    .catch(function (err) {
+        console.log(err);
+        res.status(400).send({error_code:1, msg:err});
+    });
+});
+
+// update board name
+router.put('/boards/name/:id', function(req, res, next) {
+    console.log(req.body);
+    teamService.updateBoard(req.params.id, req.body.name)
+    .then(function (result) {
+        res.json(result);
+    })
+    .catch(function (err) {
+        console.log(err);
+        res.status(400).send({error_code:1, msg:err});
+    });
+});
+
+// remove board from a team
+router.delete('/boards/:id', function(req, res, next) {
+    teamService.removeBoard(req.params.id)
+    .then(function (result) {
+        res.json(result);
+    })
+    .catch(function (err) {
+        console.log(err);
+        res.status(400).send({error_code:1, msg:err});
+    });
+});
+
+// add member to a team
+router.put('/members/:id', function(req, res, next) {
+    console.log(req.body);
+    teamService.addMember(req.params.id, req.body)
+    .then(function (result) {
+        res.json(result);
+    })
+    .catch(function (err) {
+        console.log(err);
+        res.status(400).send({error_code:1, msg:err});
+    });
+});
+
+// update member name
+router.put('/members/name/:id', function(req, res, next) {
+    console.log(req.body);
+    teamService.updateMember(req.params.id, req.body.name)
+    .then(function (result) {
+        res.json(result);
+    })
+    .catch(function (err) {
+        console.log(err);
+        res.status(400).send({error_code:1, msg:err});
+    });
+});
+
+
+// remove member from a team
+router.delete('/members/:id', function(req, res, next) {
+    teamService.removeMember(req.params.id)
+    .then(function (result) {
+        res.json(result);
+    })
+    .catch(function (err) {
+        console.log(err);
+        res.status(400).send({error_code:1, msg:err});
+    });
 });
 
 // delete team
 router.delete('/:id', function(req, res, next) {
-    Team.remove({ _id: req.params.id }, function (err) {
-        if (err) res.status(500).send({error_code:1, msg:err});
-        else res.status(200).json({error_code:0})
-      });
+    teamService.deleteTeam(req.params.id)
+    .then(function (result) {
+        res.json(result);
+    })
+    .catch(function (err) {
+        console.log(err);
+        res.status(400).send({error_code:1, msg:err});
+    });
 });
 
 module.exports = router;
