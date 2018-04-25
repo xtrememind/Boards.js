@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RoutingModule } from './routing/routing.module';
 import { HttpClientModule } from '@angular/common/http';
+import {AuthGuard} from './auth.guard';
 
 /** Pipes */
 import { SortByPipe } from './pipes/sort-by.pipe';
@@ -68,7 +69,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     UserService,
     BoardActions,
     ListActions,
-    CardActions
+    CardActions,
+    AuthGuard
   ],
   entryComponents: [CardModalComponent, BoardsPreviewModalComponent],
   bootstrap: [AppComponent]

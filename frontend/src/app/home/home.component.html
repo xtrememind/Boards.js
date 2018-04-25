@@ -23,6 +23,9 @@
       <img src="/assets/img/img_avatar3.png" alt="Avatar" class="avatar">
     </div>
     <div class="container">
+      <div class="text-danger">
+        <p>{{tempResult}}</p>
+      </div>
       <label for="uemail">
         <b>Email</b>
       </label>
@@ -35,7 +38,7 @@
       <label for="psw">
         <b>Password</b>
       </label>
-      <input type="password" placeholder="Enter Password" name="psw" [(ngModel)]="password" required #pswS="ngModel" >
+      <input type="password" placeholder="Enter Password" name="psw" [(ngModel)]="password" required #pswS="ngModel">
       <div class="text-danger" *ngIf="pswS.errors && (pswS.dirty || pswS.touched)">
         <p *ngIf="pswS.errors.required">Password is required</p>
       </div>
@@ -52,17 +55,21 @@
       <h1>Sign Up</h1>
       <p>Please fill in this form to create an account.</p>
       <hr>
+      <div class="text-danger">
+        <p>{{tempResult}}</p>
+      </div>
       <label for="uname">
         <b>Name</b>
       </label>
-      <input type="text" placeholder="Enter Name" name="uname" [(ngModel)]="userName" required #uname="ngModel"/>
+      <input type="text" placeholder="Enter Name" name="uname" [(ngModel)]="userName" required #uname="ngModel" />
       <div class="text-danger" *ngIf="uname.errors && (uname.dirty || uname.touched)">
         <p *ngIf="uname.errors.required">Name is required</p>
       </div>
       <label for="uemail">
         <b>Email</b>
       </label>
-      <input type="text" placeholder="Enter Email" name="uemail" [(ngModel)]="email" required pattern="[^ @]*@[^ @]*" #uemail="ngModel"/>
+      <input type="text" placeholder="Enter Email" name="uemail" [(ngModel)]="email" required pattern="[^ @]*@[^ @]*" #uemail="ngModel"
+      />
       <div class="text-danger" *ngIf="uemail.errors && (uemail.dirty || uemail.touched)">
         <p *ngIf="uemail.errors.required">Email is required</p>
         <p *ngIf="uemail.errors.pattern">Email must be valid</p>
