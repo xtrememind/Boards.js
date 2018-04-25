@@ -1,5 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { select } from 'ng2-redux';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'app-card-modal',
@@ -7,6 +9,7 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
   styleUrls: ['./card-modal.component.css']
 })
 export class CardModalComponent implements OnInit {
+  @select('card') public card$: Observable<any>;
 
   constructor(
     public dialogRef: MatDialogRef<CardModalComponent>,
@@ -14,7 +17,7 @@ export class CardModalComponent implements OnInit {
 
   ngOnInit() { }
 
-  onNoClick(): void {
+  close(): void {
     this.dialogRef.close();
   }
 }

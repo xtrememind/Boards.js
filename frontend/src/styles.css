@@ -1,20 +1,26 @@
 /* You can add global styles to this file, and also import other style files */
 
 @import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
-
-
 .sidebar {
-    position: fixed;
-    background-color: #fff;
-    padding: 5px;
-    z-index: 9999;
-    height: calc(100% - 49px);
-    min-width: 100px;
-    box-shadow: 0 0 2px #00f;
-  }
-  
-  .sidebar-content {
-    height: 100%;
-    overflow-y: auto;
-  }
-  
+  position: fixed;
+  background-color: #fff;
+  padding: 5px;
+  z-index: 9999;
+  height: calc(100% - 49px);
+  min-width: 100px;
+  box-shadow: 0 0 2px #00f;
+}
+
+.sidebar-content {
+  height: 100%;
+  overflow-y: auto;
+}
+
+.cdk-overlay-backdrop {
+  background-color: #000;
+  opacity: 0.6 !important;
+}
+
+.mat-dialog-container {
+  background-color: #edeff0;
+}

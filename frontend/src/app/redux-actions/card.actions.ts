@@ -5,12 +5,21 @@ import { CardService } from '../services/card.service';
 
 @Injectable()
 export class CardActions {
-
+    static CARD_GET = 'CARD_GET';
     static CARD_POST = 'CARD_POST';
     static CARD_PUT = 'CARD_PUT';
     static CARD_MOVE = 'CARD_MOVE';
 
     constructor(private ngRedux: NgRedux<IAppState>, private cardService: CardService) { }
+
+    get(id) {
+        this.cardService.get(id).subscribe((result: any) => {
+            this.ngRedux.dispatch({
+                type: CardActions.CARD_GET,
+                payload: result[0]
+            });
+        });
+    }
 
     post(card) {
         this.cardService.post(card.parent, {

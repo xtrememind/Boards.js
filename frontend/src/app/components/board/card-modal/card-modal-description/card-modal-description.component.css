@@ -1,0 +1,10 @@
+.description h3 {
+  color: #93989b;
+  font-size: 11pt;
+  font-weight: bold;
+}
+
+.description button {
+  border: none;
+  background: none;
+}

@@ -11,7 +11,11 @@ export class CardService {
 
   constructor(private httpClient: HttpClient) { }
 
+  get(id) {
+    return this.httpClient.get(`${this.apiRoot}/${id}`, httpOptions);
+  }
+
   post(listId, card) {
-    return this.httpClient.post(`${this.apiRoot}/${listId}`, card, httpOptions);
+    return this.httpClient.post(`${this.apiRoot} /${listId}`, card, httpOptions);
   }
 }
