@@ -17,8 +17,6 @@ service.addMember = addMember;
 service.removeMember = removeMember;
 service.addComment = addComment;
 service.removeComment = removeComment;
-// service.updateCardName = updateCardName;
-//service.updateListPosition = updateListPosition;
 
 
 module.exports = service;
@@ -61,7 +59,7 @@ function createCard(listID, card) {
         newCard.save(function (err) {
             if (err) deferred.reject({ error_code: 1, msg: err });
             else {
-                listService.addCard(listID, { _id: newCard.id, name: card.name, position: card.position })
+                listService.addCard(listID, { _id: newCard.id, dueDate: card.dueDate, name: card.name, position: card.position })
                 .then(function (result) {
                     deferred.resolve({ error_code: 0, _id: newCard._id });
                 })
@@ -81,7 +79,7 @@ function createCard(listID, card) {
 function deleteCard(id) {
     var deferred = Q.defer();
     try {
-        listService.removeList(id)
+        listService.removeCard(id)
             .then(function (result) {
                 Card.remove({ _id: id }, function (err) {
                     if (err) deferred.reject({ error_code: 1, msg: err });
@@ -122,11 +120,19 @@ function updateCardName(id, name) {
 function updateDueDate(id, date) {
     var deferred = Q.defer();
     try {
-        console.log('id : ' + id + 'date : ' + date)
-        Card.findOneAndUpdate({ _id: id }, { $set: { 'duedate': date } }, function (err) {
-            if (err) deferred.reject({ error_code: 1, msg: err });
-            else deferred.resolve({ error_code: 0, _id: id })
-        });
+        listService.updateCardDueDate(id, date)
+            .then(function (result) {
+                console.log('id : ' + id + 'date : ' + date);
+                Card.findOneAndUpdate({ _id: id }, { $set: { 'dueDate': date } }, function (err) {
+                    if (err) deferred.reject({ error_code: 1, msg: err });
+                    else deferred.resolve({ error_code: 0, _id: id })
+                });
+            })
+            .catch(function (err) {
+                console.log(err);
+                deferred.reject({ error_code: 1, msg: err });
+            });
+
 
     } catch (e) {
         deferred.reject(e.name + ': ' + e.message);
@@ -154,7 +160,7 @@ function addMember(id, member) {
     try {
         Card.findOneAndUpdate({ _id: id }, { $push: { members: member } }, { new: true }, function (err, doc) {
             if (err) deferred.reject({ error_code: 1, msg: err });
-            else deferred.resolve({ error_code: 0, _id: doc.cards[doc.cards.length - 1]._id })
+            else deferred.resolve({ error_code: 0, _id: doc.members[doc.members.length - 1]._id })
         });
     } catch (e) {
         deferred.reject(e.name + ': ' + e.message);
@@ -180,7 +186,7 @@ function addComment(id, comment) {
     try {
         Card.findOneAndUpdate({ _id: id }, { $push: { comments: comment } }, { new: true }, function (err, doc) {
             if (err) deferred.reject({ error_code: 1, msg: err });
-            else deferred.resolve({ error_code: 0, _id: doc.cards[doc.cards.length - 1]._id })
+            else deferred.resolve({ error_code: 0, _id: doc.comments[doc.comments.length - 1]._id })
         });
     } catch (e) {
         deferred.reject(e.name + ': ' + e.message);
