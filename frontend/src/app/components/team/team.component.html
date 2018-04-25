@@ -1,0 +1,6 @@
+<div class="team-container">
+  <div *ngFor="let board of (team$ | async).boards | sortBy : 'position'; let listIndex = index" class="list">
+      {{board.id}}
+  </div>
+  Team
+</div>

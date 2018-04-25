@@ -15,6 +15,7 @@ import { IAppState, store } from './redux-actions/store/store';
 import { BoardActions } from './redux-actions/board.actions';
 import { CardActions } from './redux-actions/card.actions';
 import { ListActions } from './redux-actions/list.actions';
+import {TeamActions} from './redux-actions/team.actions';
 
 /** Services */
 import { UserService } from './services/user.service';
@@ -39,6 +40,7 @@ import { BoardsPreviewModalComponent } from './components/topbar/boards-preview-
 /** Angular material */
 import { MatMenuModule, MatToolbarModule, MatDialogModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { TeamComponent } from './components/team/team.component';
 import { CardService } from './services/card.service';
 
 @NgModule({
@@ -54,7 +56,8 @@ import { CardService } from './services/card.service';
     TopbarComponent,
     BoardsPreviewComponent,
     CardModalComponent,
-    BoardsPreviewModalComponent
+    BoardsPreviewModalComponent,
+    TeamComponent
   ],
   imports: [
     BrowserModule,
@@ -74,6 +77,7 @@ import { CardService } from './services/card.service';
     ListActions,
     CardActions,
     AuthGuard,
+    TeamActions
     BoardService,
     ListService,
     CardService
