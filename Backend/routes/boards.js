@@ -20,6 +20,23 @@ router.get('/', function(req, res, next) {
     });
 });
 
+
+// get a specific board
+router.get('/:id', function(req, res, next) {
+    boardService.getBoard(req.params.id)
+    .then(function (boards) {
+        if (boards) {
+            res.status(200).json(boards);
+        } else {
+            res.sendStatus(404);
+        }
+    })
+    .catch(function (err) {
+        console.log(err);
+        res.status(400).send({error_code:1, msg:err});
+    });
+});
+
 // create a board and add it to a team
 router.post('/:id' /*team ID*/, function(req, res, next) {
 

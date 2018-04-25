@@ -21,14 +21,28 @@ router.get('/', function(req, res, next) {
     });
 });
 
+// get a specifc list
+router.get('/:id', function(req, res, next) {
+    listService.getList(req.params.id)
+    .then(function (lists) {
+        if (lists) {
+            res.status(200).json(lists);
+        } else {
+            res.sendStatus(404);
+        }
+    })
+    .catch(function (err) {
+        console.log(err);
+        res.status(400).send({error_code:1, msg:err});
+    });
+});
 
 // create a list and add it to a board
 router.post('/:id' /*board ID*/, function(req, res, next) {
 
     delete req.body._id
-    var list = new Board(req.body)
-    console.log('boad : ' + list);
-    listService.createBoard(req.params.id , list)
+    var list = new List(req.body)
+    listService.createList(req.params.id , list)
     .then(function (result) {
         res.json(result);
     })
@@ -53,7 +67,7 @@ router.put('/:id' /*list ID*/, function(req, res, next) {
 });
 
 // add card to a list
-router.put('/cards/:id', function(req, res, next) {
+router.put('/cards/:id' /*listId*/, function(req, res, next) {
     console.log(req.body);
     listService.addCard(req.params.id, req.body)
     .then(function (result) {
@@ -68,7 +82,7 @@ router.put('/cards/:id', function(req, res, next) {
 // update card name
 router.put('/cards/name/:id', function(req, res, next) {
     console.log(req.body);
-    listService.updateListName(req.params.id, req.body.name)
+    listService.updateCardName(req.params.id, req.body.name)
     .then(function (result) {
         res.json(result);
     })
@@ -80,7 +94,7 @@ router.put('/cards/name/:id', function(req, res, next) {
 
 // remove card from a list
 router.delete('/cards/:id', function(req, res, next) {
-    listService.removeList(req.params.id)
+    listService.removeCard(req.params.id)
     .then(function (result) {
         res.json(result);
     })

@@ -11,7 +11,6 @@ var card = new mongoose.Schema({
 
 var listSchema = new mongoose.Schema({
     name: String,
-    position: Number,
     cards: [card]
 });
 
