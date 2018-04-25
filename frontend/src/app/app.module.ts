@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RoutingModule } from './routing/routing.module';
 import { HttpClientModule } from '@angular/common/http';
-import {AuthGuard} from './auth.guard';
+import { AuthGuard } from './auth.guard';
 
 /** Pipes */
 import { SortByPipe } from './pipes/sort-by.pipe';
@@ -19,6 +19,8 @@ import {TeamActions} from './redux-actions/team.actions';
 
 /** Services */
 import { UserService } from './services/user.service';
+import { BoardService } from './services/board.service';
+import { ListService } from './services/list.service';
 
 /** Pages */
 import { HomeComponent } from './home/home.component';
@@ -39,6 +41,7 @@ import { BoardsPreviewModalComponent } from './components/topbar/boards-preview-
 import { MatMenuModule, MatToolbarModule, MatDialogModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TeamComponent } from './components/team/team.component';
+import { CardService } from './services/card.service';
 
 @NgModule({
   declarations: [
@@ -75,6 +78,9 @@ import { TeamComponent } from './components/team/team.component';
     CardActions,
     AuthGuard,
     TeamActions
+    BoardService,
+    ListService,
+    CardService
   ],
   entryComponents: [CardModalComponent, BoardsPreviewModalComponent],
   bootstrap: [AppComponent]

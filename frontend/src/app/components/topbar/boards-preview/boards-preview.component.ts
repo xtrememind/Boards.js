@@ -13,7 +13,7 @@ export class BoardsPreviewComponent implements OnInit {
   ngOnInit() { }
 
   openModal() {
-    const dialogRef = this.dialog.open(BoardsPreviewModalComponent, {
+    this.dialog.open(BoardsPreviewModalComponent, {
       width: '250px'
     });
   }

@@ -6,4 +6,5 @@ export const store = createStore(reducer);
 export interface IAppState {
     board: any;
     team:any;
+    lists: any;
 }

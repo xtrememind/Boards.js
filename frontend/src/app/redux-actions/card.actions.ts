@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { IAppState } from './store/store';
 import { NgRedux } from 'ng2-redux';
+import { CardService } from '../services/card.service';
 
 @Injectable()
 export class CardActions {
@@ -9,21 +10,24 @@ export class CardActions {
     static CARD_PUT = 'CARD_PUT';
     static CARD_MOVE = 'CARD_MOVE';
 
-    constructor(private ngRedux: NgRedux<IAppState>) { }
+    constructor(private ngRedux: NgRedux<IAppState>, private cardService: CardService) { }
 
     post(card) {
-        // post
-        const result = {
-            id: 1,
-            name: card.name
-        };
-
-        this.ngRedux.dispatch({
-            type: CardActions.CARD_POST,
-            payload: {
-                card: result,
-                parent: card.parent
-            }
+        this.cardService.post(card.parent, {
+            name: card.name,
+            position: card.position
+        }).subscribe((result: any) => {
+            this.ngRedux.dispatch({
+                type: CardActions.CARD_POST,
+                payload: {
+                    parent: card.parent,
+                    card: {
+                        _id: result._id,
+                        name: card.name,
+                        position: card.position
+                    }
+                }
+            });
         });
     }
 
