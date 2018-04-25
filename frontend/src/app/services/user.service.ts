@@ -1,6 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 
+declare const require: any;
+const config = require('../../../config.json');
+
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 };
@@ -8,7 +11,7 @@ const httpOptions = {
 @Injectable()
 export class UserService {
 
-  private apiRoot: string = 'http://localhost:3000'
+  private apiRoot: String = config.api;
 
   //http://localhost:3000/users/register
 
@@ -19,12 +22,12 @@ export class UserService {
     return this.httpClient.post(`${this.apiRoot}/users/register`, body, httpOptions);
   }
 
-  CheckAuthentication(user){
+  CheckAuthentication(user) {
     let body = JSON.stringify(user);
     return this.httpClient.post(`${this.apiRoot}/users/auth`, body, httpOptions);
   }
 
-  loggedIn(){
+  loggedIn() {
     return !!localStorage.getItem('token');
   }
 
