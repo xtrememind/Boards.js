@@ -15,15 +15,18 @@ import { IAppState, store } from './redux-actions/store/store';
 import { BoardActions } from './redux-actions/board.actions';
 import { CardActions } from './redux-actions/card.actions';
 import { ListActions } from './redux-actions/list.actions';
+import { TeamAction } from './redux-actions/team.actions';
 
 /** Services */
 import { UserService } from './services/user.service';
 import { BoardService } from './services/board.service';
 import { ListService } from './services/list.service';
+import { TeamService } from './services/team.service';
 
 /** Pages */
 import { HomeComponent } from './home/home.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { TeamBoardComponent } from './components/team/team-board.component';
 
 /** Other components */
 import { AppComponent } from './app.component';
@@ -41,8 +44,11 @@ import { CardModalDescriptionComponent } from './components/board/card-modal/car
 import { MatMenuModule, MatToolbarModule, MatDialogModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CardService } from './services/card.service';
+import { TeamDashboardComponent } from './team-dashboard/team-dashboard.component';
+
 import { MatIconModule } from '@angular/material/icon';
 import { CardModalTitleComponent } from './components/board/card-modal/card-modal-title/card-modal-title.component';
+import { CardModelActivitiesComponent } from './components/board/card-modal/card-model-activities/card-model-activities.component';
 
 @NgModule({
   declarations: [
@@ -57,9 +63,13 @@ import { CardModalTitleComponent } from './components/board/card-modal/card-moda
     TopbarComponent,
     BoardsPreviewComponent,
     CardModalComponent,
+
+    TeamBoardComponent,
+    TeamDashboardComponent,
     CardModalMembersComponent,
     CardModalDescriptionComponent,
-    CardModalTitleComponent
+    CardModalTitleComponent,
+    CardModelActivitiesComponent
   ],
   imports: [
     BrowserModule,
@@ -80,9 +90,12 @@ import { CardModalTitleComponent } from './components/board/card-modal/card-moda
     ListActions,
     CardActions,
     AuthGuard,
+
     BoardService,
     ListService,
-    CardService
+    CardService,
+    TeamService,
+    TeamAction
   ],
   entryComponents: [CardModalComponent],
   bootstrap: [AppComponent]
