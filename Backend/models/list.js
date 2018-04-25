@@ -5,8 +5,7 @@ mongoose.connect(config.connectionString);
 
 var card = new mongoose.Schema({
     name: String,
-    position: Number,
-    dueDate: Date
+    position: Number
 });
 
 var listSchema = new mongoose.Schema({

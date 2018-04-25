@@ -1,5 +1,5 @@
 var express = require('express');
-var Team = require('../models/team');
+var _ = require('lodash');
 var List = require('../models/list');
 var boardService = require('../services/boardService');
 var Q = require('q');
@@ -52,9 +52,10 @@ function createList(boardID,list) {
     console.log(list);
     var deferred = Q.defer();
     try {
-        boardService.addList(boardID, {_id: list._id, name:list.name})
+        boardService.addList(boardID, {_id: list._id, position:list.position, name:list.name})
             .then(function (result) {
-                list.save(function (err) {
+                console.log('list: '+list)
+                new List(_.omit(list, 'position')).save(function (err) {
                     if (err) deferred.reject({ error_code: 1, msg: err });
                     else deferred.resolve({ error_code: 0, _id: list._id });
                 });
