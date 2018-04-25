@@ -7,6 +7,7 @@ export class AuthGuard implements CanActivate {
  constructor(private _userService:UserService,private _router :Router ){}
 
  canActivate():boolean{
+   console.log()
    if(this._userService.loggedIn()){
      return true;
    }
@@ -15,4 +16,5 @@ export class AuthGuard implements CanActivate {
      return false;
    }
  }
+
 }

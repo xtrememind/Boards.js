@@ -1,0 +1,29 @@
+.team-container {
+    display: block;
+    overflow-y: hidden;
+    overflow-x: auto;
+    height: 100%;
+    white-space: nowrap;
+    font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
+    font-size: 10pt;
+  }
+  
+  /* .board-container .list {
+    position: relative;
+    display: inline-block;
+    height: 100%;
+    vertical-align: top;
+    background-color: #e0e0e6;
+    border-radius: 5px;
+    margin: 5px;
+  }
+  
+  .board-container .list .title {
+    font-weight: bold;
+    font-size: 11pt;
+  }
+  
+  .board-container .list .drop-zone {
+    padding: 10px;
+  } */
+  
