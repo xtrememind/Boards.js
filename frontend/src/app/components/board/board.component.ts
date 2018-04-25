@@ -10,6 +10,7 @@ import { CardActions } from '../../redux-actions/card.actions';
 })
 export class BoardComponent implements OnInit {
   @select('board') public board$: Observable<any>;
+  @select('lists') public lists$: Observable<any>;
 
   private movingCard: any;
 

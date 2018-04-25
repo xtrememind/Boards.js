@@ -1,5 +1,5 @@
 <div class="board-container">
-  <div *ngFor="let list of (board$ | async).lists | sortBy : 'position'; let listIndex = index" class="list">
+  <div *ngFor="let list of (lists$ | async) | sortBy : 'position'; let listIndex = index" class="list">
 
     <div class="drop-zone title" (drop)="drop(list, 0)" (dragover)="allowDrop($event)">
       <app-list-header [list]="list">
@@ -18,7 +18,7 @@
     <div class="drop-zone" (drop)="drop(list, -1)" (dragover)="allowDrop($event)">
       <app-board-new [collection]="'cards'" [parent]="list.id">Add a card...</app-board-new>
     </div>
-
+    
   </div>
 
   <div class="list">

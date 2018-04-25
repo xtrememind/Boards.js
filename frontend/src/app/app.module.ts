@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RoutingModule } from './routing/routing.module';
 import { HttpClientModule } from '@angular/common/http';
-import {AuthGuard} from './auth.guard';
+import { AuthGuard } from './auth.guard';
 
 /** Pipes */
 import { SortByPipe } from './pipes/sort-by.pipe';
@@ -18,6 +18,8 @@ import { ListActions } from './redux-actions/list.actions';
 
 /** Services */
 import { UserService } from './services/user.service';
+import { BoardService } from './services/board.service';
+import { ListService } from './services/list.service';
 
 /** Pages */
 import { HomeComponent } from './home/home.component';
@@ -70,7 +72,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     BoardActions,
     ListActions,
     CardActions,
-    AuthGuard
+    AuthGuard,
+    BoardService,
+    ListService
   ],
   entryComponents: [CardModalComponent, BoardsPreviewModalComponent],
   bootstrap: [AppComponent]
