@@ -1,2 +1,5 @@
 <app-topbar></app-topbar>
+<div class="dashboard-header">
+  {{ (board$ | async).name }}
+</div>
 <app-board></app-board>
