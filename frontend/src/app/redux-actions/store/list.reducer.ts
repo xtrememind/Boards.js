@@ -5,6 +5,9 @@ import { ListActions } from '../list.actions';
 export function listReducer(state: IAppState, action): IAppState {
 
     switch (action.type) {
+        case ListActions.LIST_CLEAR:
+            state.lists = [];
+            return state;
         case ListActions.LIST_GET:
             insertList(state, action.payload);
             return state;
