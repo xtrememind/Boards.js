@@ -5,12 +5,14 @@ import { CardService } from '../services/card.service';
 
 @Injectable()
 export class CardActions {
+
     static CARD_GET = 'CARD_GET';
     static CARD_POST = 'CARD_POST';
     static CARD_PUT = 'CARD_PUT';
     static CARD_MOVE = 'CARD_MOVE';
     static CARD_CHANGE_NAME = 'CARD_CHANGE_NAME';
     static CARD_CHANGE_DESCRIPTION = 'CARD_CHANGE_DESCRIPTION';
+    static CARD_DELETE = 'CARD_DELETE';
 
     constructor(private ngRedux: NgRedux<IAppState>, private cardService: CardService) { }
 
@@ -72,6 +74,11 @@ export class CardActions {
         this.ngRedux.dispatch({
             type: CardActions.CARD_MOVE,
             payload: card
+        });
+    }
+
+    delete(card) {
+        this.cardService.delete(card).subscribe((r: any) => {
         });
     }
 }

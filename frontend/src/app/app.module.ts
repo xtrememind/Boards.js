@@ -39,6 +39,8 @@ import { BoardsPreviewComponent } from './components/topbar/boards-preview/board
 import { CardModalComponent } from './components/board/card-modal/card-modal.component';
 import { CardModalMembersComponent } from './components/board/card-modal/card-modal-members/card-modal-members.component';
 import { CardModalDescriptionComponent } from './components/board/card-modal/card-modal-description/card-modal-description.component';
+import { CardModalTitleComponent } from './components/board/card-modal/card-modal-title/card-modal-title.component';
+import { CardModalActionsComponent } from './components/board/card-modal/card-modal-actions/card-modal-actions.component';
 
 /** Angular material */
 import { MatMenuModule, MatToolbarModule, MatDialogModule } from '@angular/material';
@@ -47,7 +49,6 @@ import { CardService } from './services/card.service';
 import { TeamDashboardComponent } from './team-dashboard/team-dashboard.component';
 
 import { MatIconModule } from '@angular/material/icon';
-import { CardModalTitleComponent } from './components/board/card-modal/card-modal-title/card-modal-title.component';
 // import { CardModelActivitiesComponent } from './components/board/card-modal/card-model-activities/card-model-activities.component';
 
 @NgModule({
@@ -68,7 +69,8 @@ import { CardModalTitleComponent } from './components/board/card-modal/card-moda
     TeamDashboardComponent,
     CardModalMembersComponent,
     CardModalDescriptionComponent,
-    CardModalTitleComponent
+    CardModalTitleComponent,
+    CardModalActionsComponent
     // ,CardModelActivitiesComponent
   ],
   imports: [
