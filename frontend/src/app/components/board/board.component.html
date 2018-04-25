@@ -1,33 +1,28 @@
 <div class="board-container" *ngIf="lists$ | async as lists">
-  <div *ngFor="let list of lists | sortBy : 'position'; let listIndex = index" class="list" 
-    (dragover)="allowDrop($event)" (drop)="drop(list, listIndex, -99)">
+  <div *ngFor="let list of lists | sortBy : 'position'; let listIndex = index" class="list" (dragover)="allowDrop($event)"
+    (drop)="drop(list, listIndex, -99)">
 
-    <div class="drop-zone title" 
-        draggable="true" (dragstart)="dragList(list)"
-        (dragover)="allowDrop($event)" (drop)="drop(list, listIndex, 0)">
+    <div class="drop-zone title" draggable="true" (dragstart)="dragList(list)" (dragover)="allowDrop($event)" (drop)="drop(list, listIndex, 0)">
       <app-list-header [list]="list">
       </app-list-header>
     </div>
 
-    <div class="drop-zone" *ngFor="let card of list.cards | sortBy : 'position'; let cardIndex = index" 
-      (dragover)="allowDrop($event)" (drop)="drop(list, listIndex, cardIndex)">
+    <div class="drop-zone" *ngFor="let card of list.cards | sortBy : 'position'; let cardIndex = index" (dragover)="allowDrop($event)"
+      (drop)="drop(list, listIndex, cardIndex)">
 
       <div draggable="true" (dragstart)="dragCard(list, card)">
-        <app-board-card [card]="card"></app-board-card>
+        <app-board-card [card]="card" [list]="list"></app-board-card>
       </div>
 
     </div>
 
-    <div class="drop-zone" 
-      draggable="true" (dragstart)="dragList(list)" 
-      (dragover)="allowDrop($event)" (drop)="drop(list, listIndex, list.cards.length)">
+    <div class="drop-zone" draggable="true" (dragstart)="dragList(list)" (dragover)="allowDrop($event)" (drop)="drop(list, listIndex, list.cards.length)">
       <app-board-new [collection]="'cards'" [parent]="list._id" [position]="list.cards.length">Add a card...</app-board-new>
     </div>
 
   </div>
 
-  <div class="list" 
-    (dragover)="allowDrop($event)" (drop)="drop(list, ((lists.length > 0) ? lists.length -1 : 0), -99)">
+  <div class="list" (dragover)="allowDrop($event)" (drop)="drop(list, ((lists.length > 0) ? lists.length -1 : 0), -99)">
     <div class="drop-zone">
       <app-board-new [collection]="'lists'" [parent]="boardId" [position]="lists.length">Add a list...</app-board-new>
     </div>

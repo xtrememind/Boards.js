@@ -9,7 +9,6 @@ import { Observable } from 'rxjs/Observable';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
-
   @select('board') board$: Observable<any>;
 
   constructor(private boardActions: BoardActions) { }

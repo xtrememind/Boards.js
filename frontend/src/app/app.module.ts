@@ -42,6 +42,7 @@ import { MatMenuModule, MatToolbarModule, MatDialogModule } from '@angular/mater
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CardService } from './services/card.service';
 import { MatIconModule } from '@angular/material/icon';
+import { CardModalTitleComponent } from './components/board/card-modal/card-modal-title/card-modal-title.component';
 
 @NgModule({
   declarations: [
@@ -57,7 +58,8 @@ import { MatIconModule } from '@angular/material/icon';
     BoardsPreviewComponent,
     CardModalComponent,
     CardModalMembersComponent,
-    CardModalDescriptionComponent
+    CardModalDescriptionComponent,
+    CardModalTitleComponent
   ],
   imports: [
     BrowserModule,
