@@ -9,7 +9,7 @@ import {TeamDashboardComponent} from '../team-dashboard/team-dashboard.component
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
-  { path: 'dashboard', component: DashboardComponent },
+  { path: 'dashboard/:id', component: DashboardComponent },
   { path: 'team', component: TeamDashboardComponent }
 ];
 
