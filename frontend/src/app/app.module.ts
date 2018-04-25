@@ -48,7 +48,7 @@ import { TeamDashboardComponent } from './team-dashboard/team-dashboard.componen
 
 import { MatIconModule } from '@angular/material/icon';
 import { CardModalTitleComponent } from './components/board/card-modal/card-modal-title/card-modal-title.component';
-import { CardModelActivitiesComponent } from './components/board/card-modal/card-model-activities/card-model-activities.component';
+// import { CardModelActivitiesComponent } from './components/board/card-modal/card-model-activities/card-model-activities.component';
 
 @NgModule({
   declarations: [
@@ -68,8 +68,8 @@ import { CardModelActivitiesComponent } from './components/board/card-modal/card
     TeamDashboardComponent,
     CardModalMembersComponent,
     CardModalDescriptionComponent,
-    CardModalTitleComponent,
-    CardModelActivitiesComponent
+    CardModalTitleComponent
+    // ,CardModelActivitiesComponent
   ],
   imports: [
     BrowserModule,
