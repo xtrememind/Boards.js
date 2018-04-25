@@ -1,14 +1,28 @@
 import { Injectable } from '@angular/core';
 import { IAppState } from './store/store';
 import { NgRedux } from 'ng2-redux';
+import { ListService } from '../services/list.service';
 
 @Injectable()
 export class ListActions {
+    static LIST_GET = 'LIST_GET';
     static LIST_POST = 'LIST_POST';
     static LIST_PUT = 'LIST_PUT';
     static LIST_DELETE = 'LIST_DELETE';
 
-    constructor(private ngRedux: NgRedux<IAppState>) { }
+    constructor(private ngRedux: NgRedux<IAppState>, private listService: ListService) { }
+
+    get(id, position) {
+        this.listService.get(id).subscribe(list => {
+            this.ngRedux.dispatch({
+                type: ListActions.LIST_GET,
+                payload: {
+                    list: list[0],
+                    position: position
+                }
+            });
+        });
+    }
 
     post(list) {
         // post
@@ -28,10 +42,11 @@ export class ListActions {
     }
 
     put(list) {
-        // put....
-        this.ngRedux.dispatch({
-            type: ListActions.LIST_PUT,
-            payload: list
+        this.listService.put(list).subscribe(r => {
+            this.ngRedux.dispatch({
+                type: ListActions.LIST_PUT,
+                payload: list
+            });
         });
     }
 
