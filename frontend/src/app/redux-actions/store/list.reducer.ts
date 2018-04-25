@@ -27,7 +27,7 @@ export function listReducer(state: IAppState, action): IAppState {
     }
 
     function insertList(state, payload) {
-        if (state.lists.some(l => l.id && l.id === payload.id)) {
+        if (state.lists.some(l => l._id && payload.list && payload.list._id && l._id === payload.list._id)) {
             deleteList(state, payload.list);
         }
 
@@ -42,7 +42,8 @@ export function listReducer(state: IAppState, action): IAppState {
     }
 
     function deleteList(state, list) {
-        const index = state.lists.indexOf(list);
+        const stateList = state.lists.filter(l => l._id === list._id)[0];
+        const index = state.lists.indexOf(stateList);
         state.lists.splice(index, 1);
     }
 

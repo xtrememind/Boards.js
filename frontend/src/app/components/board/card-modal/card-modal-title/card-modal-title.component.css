@@ -1,0 +1,20 @@
+.card-modal-title {
+  vertical-align: top;
+  display: inline-block;
+  width: 650px;
+}
+
+.card-modal-title div {
+  vertical-align: top;
+  display: inline-block;
+}
+
+.card-modal-title input {
+  width: 600px;
+  padding: 0 5px 0 5px;
+  border-radius: 3px;
+  cursor: pointer;
+  border: 1px solid #0079bf;
+  box-shadow: 0 0 2px 0 #0284c6;
+  font-weight: bold;
+}
