@@ -11,10 +11,10 @@ import { SortByPipe } from './pipes/sort-by.pipe';
 
 /** Redux */
 import { NgRedux, NgReduxModule } from 'ng2-redux';
-import { IAppState, store } from '../redux-actions/store/store';
-import { BoardActions } from '../redux-actions/board.actions';
-import { CardActions } from '../redux-actions/card.actions';
-import { ListActions } from '../redux-actions/list.actions';
+import { IAppState, store } from './redux-actions/store/store';
+import { BoardActions } from './redux-actions/board.actions';
+import { CardActions } from './redux-actions/card.actions';
+import { ListActions } from './redux-actions/list.actions';
 
 /** Services */
 import { UserService } from './services/user.service';
