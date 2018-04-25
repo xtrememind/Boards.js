@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { CardActions } from '../../../../redux-actions/card.actions';
-import { ListActions } from '../../../../redux-actions/list.actions';
+import { CardActions } from '../../../redux-actions/card.actions';
+import { ListActions } from '../../../redux-actions/list.actions';
 
 @Component({
   selector: 'app-board-new',

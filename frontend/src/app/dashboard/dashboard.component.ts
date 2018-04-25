@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { BoardActions } from '../../redux-actions/board.actions';
+import { BoardActions } from '../redux-actions/board.actions';
 
 @Component({
   selector: 'app-dashboard',
