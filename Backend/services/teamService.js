@@ -76,7 +76,7 @@ function addBoard(id, board) {
 function removeBoard(id) {
     var deferred = Q.defer();
     try {
-        Team.findOneAndUpdate({},{$pull :{'boards':{'_id': id}}},{new: true}, function (err, doc) {
+        Team.findOneAndUpdate({'boards._id':id},{$pull :{'boards':{'_id': id}}},{new: true}, function (err, doc) {
             if (err) deferred.reject({error_code:1, msg:err});
             else deferred.resolve({error_code:0})
           });
@@ -132,7 +132,7 @@ function updateMember(id, name) {
 function removeMember(id) {
     var deferred = Q.defer();
     try {
-        Team.findOneAndUpdate({},{$pull :{'members':{'_id': id}}},{new: true}, function (err, doc) {
+        Team.findOneAndUpdate({'members.+id': id},{$pull :{'members':{'_id': id}}},{new: true}, function (err, doc) {
             if (err) deferred.reject({error_code:1, msg:err});
             else deferred.resolve({error_code:0})
           });

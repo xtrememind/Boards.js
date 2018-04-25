@@ -7,12 +7,12 @@ var Q = require('q');
 var service = {};
 
 service.getBoards = getBoards;
+service.getBoard = getBoard;
 service.createBoard = createBoard;
 service.updateBoardName = updateBoardName;
 service.deleteBoard = deleteBoard;
 service.addList = addList;
 service.updateListName = updateListName;
-//service.updateListPosition = updateListPosition;
 service.removeList = removeList;
 
 module.exports = service;
@@ -25,6 +25,21 @@ function getBoards() {
                 console.log(results);
                 if (err) deferred.reject({error_code:1, msg:err});
                 else deferred.resolve(results);
+            });
+    } catch (e) {
+        deferred.reject(e.name + ': ' + e.message);
+    }
+    return deferred.promise;
+};
+
+function getBoard(id) {
+    var deferred = Q.defer();
+    try {
+        Board.find({_id: id})
+            .exec(function(err, result) {
+                console.log(result);
+                if (err) deferred.reject({error_code:1, msg:err});
+                else deferred.resolve(result);
             });
     } catch (e) {
         deferred.reject(e.name + ': ' + e.message);
@@ -126,7 +141,7 @@ function updateListName(id, name) {
 function removeList(id) {
     var deferred = Q.defer();
     try {
-        Board.findOneAndUpdate({},{$pull :{'lists':{'_id': id}}},{new: true}, function (err, doc) {
+        Board.findOneAndUpdate({'lists._id': id},{$pull :{'lists':{'_id': id}}},{new: true}, function (err, doc) {
             if (err) deferred.reject({error_code:1, msg:err});
             else deferred.resolve({error_code:0})
           });
