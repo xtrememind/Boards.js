@@ -13,6 +13,7 @@ service.updateBoardName = updateBoardName;
 service.deleteBoard = deleteBoard;
 service.addList = addList;
 service.updateListName = updateListName;
+// service.updateListPosition = updateListPosition;
 service.removeList = removeList;
 
 module.exports = service;
@@ -150,3 +151,16 @@ function removeList(id) {
     }
     return deferred.promise;
 }
+
+// function updateListPosition(id, newPos) {
+//     var deferred = Q.defer();
+//     try {
+//                 Board.findOneAndUpdate({'lists._id': id},{$pull :{'lists':{'_id': id}}},{new: true}, function (err, doc) {
+//             if (err) deferred.reject({error_code:1, msg:err});
+//             else deferred.resolve({error_code:0})
+//           });
+//     } catch (e) {
+//         deferred.reject(e.name + ': ' + e.message);
+//     }
+//     return deferred.promise;
+// }
