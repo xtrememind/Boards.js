@@ -10,7 +10,6 @@ import { ListActions } from '../../redux-actions/list.actions';
   styleUrls: ['./board.component.css']
 })
 export class BoardComponent implements OnInit {
-  @select('board') public board$: Observable<any>;
   @select('lists') public lists$: Observable<any>;
 
   @Input() boardId: any;

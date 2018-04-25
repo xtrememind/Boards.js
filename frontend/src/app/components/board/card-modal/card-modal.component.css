@@ -1,0 +1,18 @@
+h1 {
+  margin: -10px 0 15px -20px;
+}
+
+.mat-dialog-content {
+  margin: 0 0 0 -14px;
+}
+
+.mat-dialog-actions {
+  margin: 0 0 -24px 10px;
+}
+
+.close-btn {
+  float: right;
+  background-color: transparent;
+  border: none;
+  padding: 0 5px;
+}

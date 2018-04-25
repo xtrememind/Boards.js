@@ -7,4 +7,5 @@ export interface IAppState {
     board: any;
     lists: any;
     team:any;
+    card: any;
 }

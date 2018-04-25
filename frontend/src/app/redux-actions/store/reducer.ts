@@ -14,7 +14,8 @@ const initial: IAppState = {
     lists: []
   },
   lists: [],
-  team: []
+  team: [],
+  card: {}
 };
 
 export function reducer(state: IAppState = initial, action) {

@@ -37,7 +37,8 @@ import { BoardCardComponent } from './components/board/board-card/board-card.com
 import { TopbarComponent } from './components/topbar/topbar.component';
 import { BoardsPreviewComponent } from './components/topbar/boards-preview/boards-preview.component';
 import { CardModalComponent } from './components/board/card-modal/card-modal.component';
-import { BoardsPreviewModalComponent } from './components/topbar/boards-preview-modal/boards-preview-modal.component';
+import { CardModalMembersComponent } from './components/board/card-modal/card-modal-members/card-modal-members.component';
+import { CardModalDescriptionComponent } from './components/board/card-modal/card-modal-description/card-modal-description.component';
 
 /** Angular material */
 import { MatMenuModule, MatToolbarModule, MatDialogModule } from '@angular/material';
@@ -45,6 +46,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CardService } from './services/card.service';
 import { TeamDashboardComponent } from './team-dashboard/team-dashboard.component';
 
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -59,9 +61,11 @@ import { TeamDashboardComponent } from './team-dashboard/team-dashboard.componen
     TopbarComponent,
     BoardsPreviewComponent,
     CardModalComponent,
-    BoardsPreviewModalComponent,
+   
     TeamBoardComponent,
-    TeamDashboardComponent
+    TeamDashboardComponent,
+    CardModalMembersComponent,
+    CardModalDescriptionComponent
   ],
   imports: [
     BrowserModule,
@@ -73,7 +77,8 @@ import { TeamDashboardComponent } from './team-dashboard/team-dashboard.componen
     MatMenuModule,
     MatToolbarModule,
     BrowserAnimationsModule,
-    MatDialogModule
+    MatDialogModule,
+    MatIconModule
   ],
   providers: [
     UserService,
@@ -88,7 +93,7 @@ import { TeamDashboardComponent } from './team-dashboard/team-dashboard.componen
     TeamService,
     TeamAction
   ],
-  entryComponents: [CardModalComponent, BoardsPreviewModalComponent],
+  entryComponents: [CardModalComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule {
