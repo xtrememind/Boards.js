@@ -15,8 +15,15 @@ export class BoardComponent implements OnInit {
 
   @Input() boardId: any;
 
-  private movingCard: any;
-  private movingList: any;
+  /*
+  {
+    type: 'list' / 'card',
+    content: { list, position } / { card, originList, destinationList, position }
+  }
+  */
+  private moving: any = {
+    type: 'void'
+  };
 
   constructor(private cardActions: CardActions, private listActions: ListActions) { }
   ngOnInit() { }
@@ -26,26 +33,42 @@ export class BoardComponent implements OnInit {
   }
 
   dragCard(list, card) {
-    this.movingCard = {
-      card: card,
-      originList: list
+    this.moving = {
+      type: 'card',
+      content: {
+        card: card,
+        originList: list
+      }
     };
-  }
-
-  dropCard(list, htmlIdx) {
-    this.movingCard.destinationList = list;
-    this.movingCard.position = htmlIdx;
-    this.cardActions.move(this.movingCard);
   }
 
   dragList(list, listIndex) {
-    this.movingList = {
-      list: list
+    this.moving = {
+      type: 'list',
+      content: {
+        list: list
+      }
     };
   }
 
-  dropList(list, listIndex) {
-    this.movingList.position = listIndex;
-    this.listActions.move(this.movingList);
+  drop(list, listIdx, cardIdx) {
+    if (this.moving.type === 'void') {
+      return;
+    }
+
+    if (this.moving.type === 'card') {
+      if (cardIdx === -99) {
+        return;
+      }
+
+      this.moving.content.destinationList = list;
+      this.moving.content.position = cardIdx;
+      this.cardActions.move(this.moving.content);
+    } else {
+      this.moving.content.position = listIdx;
+      this.listActions.move(this.moving.content);
+    }
+
+    this.moving.type = 'void';
   }
 }

@@ -9,6 +9,7 @@ export class ListActions {
     static LIST_POST = 'LIST_POST';
     static LIST_PUT = 'LIST_PUT';
     static LIST_DELETE = 'LIST_DELETE';
+    static LIST_MOVE = 'LIST_MOVE';
 
     constructor(private ngRedux: NgRedux<IAppState>, private listService: ListService) { }
 
@@ -60,6 +61,12 @@ export class ListActions {
 
     move(movingList) {
         console.log(`list ${movingList.list._id} changed to ${movingList.position}`);
+        // TODO: Post
+
+        this.ngRedux.dispatch({
+            type: ListActions.LIST_MOVE,
+            payload: movingList
+        });
     }
 
     delete(list) {

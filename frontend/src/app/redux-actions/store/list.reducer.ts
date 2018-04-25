@@ -6,7 +6,7 @@ export function listReducer(state: IAppState, action): IAppState {
 
     switch (action.type) {
         case ListActions.LIST_GET:
-            insertList(state, action);
+            insertList(state, action.payload);
             return state;
         case ListActions.LIST_POST:
             state.lists.push(action.payload.list);
@@ -17,16 +17,19 @@ export function listReducer(state: IAppState, action): IAppState {
         case ListActions.LIST_DELETE:
             deleteList(state, action.payload);
             return state;
+        case ListActions.LIST_MOVE:
+            moveList(state, action.payload);
+            return state;
         default: return null;
     }
 
-    function insertList(state, action) {
-        if (state.lists.some(l => l.id && l.id === action.payload.id)) {
-            deleteList(state, action.payload.list);
+    function insertList(state, payload) {
+        if (state.lists.some(l => l.id && l.id === payload.id)) {
+            deleteList(state, payload.list);
         }
 
-        action.payload.list.position = action.payload.position;
-        state.lists.push(action.payload.list);
+        payload.list.position = payload.position;
+        state.lists.push(payload.list);
 
         state.lists = state.lists.sort(function (a, b) {
             const x = a.position;
@@ -38,5 +41,13 @@ export function listReducer(state: IAppState, action): IAppState {
     function deleteList(state, list) {
         const index = state.lists.indexOf(list);
         state.lists.splice(index, 1);
+    }
+
+    function moveList(state, payload) {
+        const oldList = state.lists.filter(l => l._id === payload.list._id)[0];
+        deleteList(state, oldList);
+
+        // can't use insertList because it will resort everything
+        state.lists.splice(payload.position, 0, payload.list);
     }
 }

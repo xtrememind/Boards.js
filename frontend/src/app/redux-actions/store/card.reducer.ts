@@ -28,9 +28,6 @@ export function cardReducer(state: IAppState, action): IAppState {
         }
 
         function addCardToList(payload) {
-            if (payload.position === -1) {
-                payload.position = payload.destinationList.cards.length;
-            }
             payload.destinationList.cards.splice(payload.position, 0, payload.card);
         }
     }
