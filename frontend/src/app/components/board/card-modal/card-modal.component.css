@@ -17,3 +17,15 @@ h1 {
   border: none;
   padding: 0 5px;
 }
+
+.col-80 {
+  display: inline-block;
+  width: 79%;
+  vertical-align: top;
+}
+
+.col-20 {
+  display: inline-block;
+  width: 19%;
+  vertical-align: top;
+}

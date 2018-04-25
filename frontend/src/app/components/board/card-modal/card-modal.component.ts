@@ -17,6 +17,10 @@ export class CardModalComponent implements OnInit {
 
   ngOnInit() { }
 
+  archiveCard(card) {
+    this.close();
+  }
+
   close(): void {
     this.dialogRef.close();
   }

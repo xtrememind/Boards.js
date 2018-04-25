@@ -29,4 +29,8 @@ export class CardService {
   changeDescription(card) {
     return this.httpClient.put(`${this.apiRoot}/description/${card._id}`, card);
   }
+
+  delete(card) {
+    return this.httpClient.delete(`${this.apiRoot}/${card._id}`, httpOptions);
+  }
 }

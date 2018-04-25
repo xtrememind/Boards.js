@@ -4,7 +4,12 @@
     <button (click)="close()" class="close-btn">X</button>
   </h1>
   <div mat-dialog-content>
-    <app-card-modal-members [card]="card"></app-card-modal-members>
-    <app-card-modal-description [card]="card"></app-card-modal-description>
+    <div class="col-80">
+      <app-card-modal-members [card]="card"></app-card-modal-members>
+      <app-card-modal-description [card]="card"></app-card-modal-description>
+    </div>
+    <div class="col-20">
+      <app-card-modal-actions [card]="card" (archive)="archiveCard($event)"></app-card-modal-actions>
+    </div>
   </div>
 </div>
