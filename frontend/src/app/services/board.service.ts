@@ -1,6 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 
+declare const require: any;
+const config = require('../../../config.json');
+
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 };
@@ -8,7 +11,7 @@ const httpOptions = {
 @Injectable()
 export class BoardService {
 
-  private apiRoot: String = 'http://localhost:3001/boards';
+  private apiRoot: String = `${config.api}/boards`;
 
   constructor(private httpClient: HttpClient) { }
 
