@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { select } from 'ng2-redux';
 import { Observable } from 'rxjs/Observable';
-import { CardActions } from '../../../redux-actions/card.actions';
+import { CardActions } from '../../redux-actions/card.actions';
 
 @Component({
   selector: 'app-board',

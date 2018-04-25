@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { ListActions } from '../../../../redux-actions/list.actions';
+import { ListActions } from '../../../redux-actions/list.actions';
 
 @Component({
   selector: 'app-list-header',
