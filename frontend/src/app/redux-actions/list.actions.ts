@@ -6,12 +6,19 @@ import { ListService } from '../services/list.service';
 @Injectable()
 export class ListActions {
     static LIST_GET = 'LIST_GET';
+    static LIST_CLEAR = 'LIST_CLEAR';
     static LIST_POST = 'LIST_POST';
     static LIST_PUT = 'LIST_PUT';
     static LIST_DELETE = 'LIST_DELETE';
     static LIST_MOVE = 'LIST_MOVE';
 
     constructor(private ngRedux: NgRedux<IAppState>, private listService: ListService) { }
+
+    clear() {
+        this.ngRedux.dispatch({
+            type: ListActions.LIST_CLEAR
+        });
+    }
 
     get(id, position) {
         this.listService.get(id).subscribe((list: any) => {

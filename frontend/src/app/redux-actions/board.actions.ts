@@ -17,6 +17,8 @@ export class BoardActions {
                 payload: board[0]
             });
 
+            this.listActions.clear();
+
             for (const list of board[0].lists) {
                 this.listActions.get(list._id, list.position);
             }
