@@ -34,11 +34,14 @@ import { BoardCardComponent } from './components/board/board-card/board-card.com
 import { TopbarComponent } from './components/topbar/topbar.component';
 import { BoardsPreviewComponent } from './components/topbar/boards-preview/boards-preview.component';
 import { CardModalComponent } from './components/board/card-modal/card-modal.component';
+import { CardModalMembersComponent } from './components/board/card-modal/card-modal-members/card-modal-members.component';
+import { CardModalDescriptionComponent } from './components/board/card-modal/card-modal-description/card-modal-description.component';
 
 /** Angular material */
 import { MatMenuModule, MatToolbarModule, MatDialogModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CardService } from './services/card.service';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -52,7 +55,9 @@ import { CardService } from './services/card.service';
     DashboardComponent,
     TopbarComponent,
     BoardsPreviewComponent,
-    CardModalComponent
+    CardModalComponent,
+    CardModalMembersComponent,
+    CardModalDescriptionComponent
   ],
   imports: [
     BrowserModule,
@@ -64,7 +69,8 @@ import { CardService } from './services/card.service';
     MatMenuModule,
     MatToolbarModule,
     BrowserAnimationsModule,
-    MatDialogModule
+    MatDialogModule,
+    MatIconModule
   ],
   providers: [
     UserService,

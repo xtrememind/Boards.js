@@ -1,1 +1,9 @@
-<div class="board-card" (click)="openModal()" >{{card.name}}</div>
+<div class="board-card" (click)="openModal()">
+  <p>{{card.name}}</p>
+  <p *ngIf="card.dueDate" class="dueDate">
+    <mat-icon class="icon">av timer</mat-icon>
+    <span class="date">
+      {{card.dueDate | date: 'MMM d'}}
+    </span>
+  </p>
+</div>

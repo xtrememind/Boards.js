@@ -5,6 +5,9 @@ import { CardActions } from '../card.actions';
 export function cardReducer(state: IAppState, action): IAppState {
 
     switch (action.type) {
+        case CardActions.CARD_GET:
+            console.log(action.payload);
+            return Object.assign({}, state, { card: action.payload });
         case CardActions.CARD_POST:
             return addCard(state, action);
         case CardActions.CARD_MOVE:
