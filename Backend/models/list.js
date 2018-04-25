@@ -5,6 +5,7 @@ mongoose.connect(config.connectionString);
 
 var card = new mongoose.Schema({
     name: String,
+    dueDate: Date,
     position: Number
 });
 

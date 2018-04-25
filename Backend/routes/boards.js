@@ -79,6 +79,19 @@ router.put('/lists/:id', function(req, res, next) {
     });
 });
 
+// update list position
+router.put('/lists/position/:id/', function(req, res, next) {
+    console.log(req.body);
+    boardService.updateListPosition(req.params.id, parseInt(req.body.newpos))
+    .then(function (result) {
+        res.json(result);
+    })
+    .catch(function (err) {
+        console.log(err);
+        res.status(400).send({error_code:1, msg:err});
+    });
+});
+
 // update list name
 router.put('/lists/name/:id', function(req, res, next) {
     console.log(req.body);

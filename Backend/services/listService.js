@@ -13,6 +13,7 @@ service.updateListName = updateListName;
 service.deleteList = deleteList;
 service.addCard = addCard;
 service.updateCardName = updateCardName;
+service.updateCardDueDate = updateCardDueDate;
 //service.updateListPosition = updateListPosition;
 service.removeCard = removeCard;
 
@@ -133,6 +134,21 @@ function updateCardName(id, name) {
     console.log(id + ' ' + name)
     try {
         List.findOneAndUpdate({'cards._id': id},{'$set':{'cards.$.name': name}}
+        ,{new: true}, function (err, doc) {
+            if (err) deferred.reject({error_code:1, msg:err});
+            else deferred.resolve({error_code:0, _id: id})
+          });
+    } catch (e) {
+        deferred.reject(e.name + ': ' + e.message);
+    }
+    return deferred.promise;
+}
+
+function updateCardDueDate(id, date) {
+    var deferred = Q.defer();
+    console.log(id + ' ' + date)
+    try {
+        List.findOneAndUpdate({'cards._id': id},{'$set':{'cards.$.dueDate': date}}
         ,{new: true}, function (err, doc) {
             if (err) deferred.reject({error_code:1, msg:err});
             else deferred.resolve({error_code:0, _id: id})
