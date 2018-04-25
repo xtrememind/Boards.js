@@ -11,7 +11,7 @@ export class DashboardComponent implements OnInit {
   constructor(private boardActions: BoardActions) { }
 
   ngOnInit() {
-    this.boardActions.getAll();
+    this.boardActions.getAll(1);
   }
 
 }

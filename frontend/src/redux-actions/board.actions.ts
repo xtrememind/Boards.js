@@ -8,7 +8,7 @@ export class BoardActions {
 
     constructor(private ngRedux: NgRedux<IAppState>) { }
 
-    getAll() {
+    getAll(id) {
         let board = JSON.parse(localStorage.getItem('board'));
 
         if (!board) {
