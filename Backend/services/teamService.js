@@ -6,6 +6,7 @@ var Q = require('q');
 var service = {};
 
 service.getTeams = getTeams;
+service.getTeam = getTeam;
 service.createTeam = createTeam;
 service.updateTeamName = updateTeamName;
 service.addBoard= addBoard;
@@ -22,6 +23,21 @@ function getTeams() {
     var deferred = Q.defer();
     try {
         Team.find({})
+            .exec(function(err, results) {
+                console.log(results);
+                if (err) deferred.reject({error_code:1, msg:err});
+                else deferred.resolve(results);
+            });
+    } catch (e) {
+        deferred.reject(e.name + ': ' + e.message);
+    }
+    return deferred.promise;
+};
+
+function getTeam(id) {
+    var deferred = Q.defer();
+    try {
+        Team.find({_id:id})
             .exec(function(err, results) {
                 console.log(results);
                 if (err) deferred.reject({error_code:1, msg:err});

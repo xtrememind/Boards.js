@@ -3,6 +3,8 @@ var router = express.Router();
 var mongoose = require('mongoose');
 var Activity = require('../models/activity');
 
+
+// get by object id
 router.get('/:id', function (req, res, next) {
     console.log(req.params.id);
     Activity.find({object:req.params.id}, (err, data) => {
@@ -12,9 +14,19 @@ router.get('/:id', function (req, res, next) {
         }
         res.status(200).json(data);
     });
-
 });
 
+// get all activities
+router.get('/', function (req, res, next) {
+    console.log(req.params.id);
+    Activity.find({}, (err, data) => {
+        if (err) {
+            console.log(err);
+            res.status(500).send({ error_code: 1, msg: err });
+        }
+        res.status(200).json(data);
+    });
+});
 // router.post('/', function (req, res, next) {
 //     console.log(res.body);
 //     let activity = new Activity(req.body);

@@ -47,6 +47,7 @@ import { CardService } from './services/card.service';
 import { TeamDashboardComponent } from './team-dashboard/team-dashboard.component';
 
 import { MatIconModule } from '@angular/material/icon';
+import { CardModelActivitiesComponent } from './components/board/card-modal/card-model-activities/card-model-activities.component';
 
 @NgModule({
   declarations: [
@@ -65,7 +66,8 @@ import { MatIconModule } from '@angular/material/icon';
     TeamBoardComponent,
     TeamDashboardComponent,
     CardModalMembersComponent,
-    CardModalDescriptionComponent
+    CardModalDescriptionComponent,
+    CardModelActivitiesComponent
   ],
   imports: [
     BrowserModule,
