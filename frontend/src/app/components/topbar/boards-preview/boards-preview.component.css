@@ -11,3 +11,8 @@
 .boards-btn:hover {
   background-color: #3588b9;
 }
+
+.cdk-overlay-pane {
+  position: fixed;
+  left: 0;
+}

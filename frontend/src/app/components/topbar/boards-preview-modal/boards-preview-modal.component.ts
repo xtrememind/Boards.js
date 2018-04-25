@@ -11,5 +11,4 @@ export class BoardsPreviewModalComponent implements OnInit {
   constructor(public dialogRef: MatDialogRef<BoardsPreviewModalComponent>) { }
 
   ngOnInit() { }
-
 }

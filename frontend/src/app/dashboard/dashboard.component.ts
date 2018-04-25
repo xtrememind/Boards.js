@@ -15,7 +15,7 @@ export class DashboardComponent implements OnInit {
   constructor(private boardActions: BoardActions) { }
 
   ngOnInit() {
-    this.boardActions.get("5adfa5719ae5575279bcf137");
+    this.boardActions.get('5adfa5719ae5575279bcf137');
   }
 
 }
