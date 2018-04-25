@@ -30,6 +30,8 @@ import { ListHeaderComponent } from './components/board/list-header/list-header.
 import { BoardCardComponent } from './components/board/board-card/board-card.component';
 import { TopbarComponent } from './components/topbar/topbar.component';
 import { BoardsPreviewComponent } from './components/topbar/boards-preview/boards-preview.component';
+import { CardModalComponent } from './components/board/card-modal/card-modal.component';
+import { BoardsPreviewModalComponent } from './components/topbar/boards-preview-modal/boards-preview-modal.component';
 
 /** Angular material */
 import { MatMenuModule, MatToolbarModule, MatDialogModule } from '@angular/material';
@@ -46,7 +48,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     HomeComponent,
     DashboardComponent,
     TopbarComponent,
-    BoardsPreviewComponent
+    BoardsPreviewComponent,
+    CardModalComponent,
+    BoardsPreviewModalComponent
   ],
   imports: [
     BrowserModule,
@@ -66,6 +70,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ListActions,
     CardActions
   ],
+  entryComponents: [CardModalComponent, BoardsPreviewModalComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule {
