@@ -14,6 +14,7 @@ var teamsRouter = require('./routes/teams');
 var membersRouter = require('./routes/members');
 var boardsRouter = require('./routes/boards');
 var listsRouter = require('./routes/lists');
+var cardsRouter = require('./routes/cards');
 
 var app = express();
 
@@ -38,6 +39,7 @@ app.use('/teams', teamsRouter);
 app.use('/members', membersRouter);
 app.use('/boards', boardsRouter);
 app.use('/lists', listsRouter);
+app.use('/cards', cardsRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
