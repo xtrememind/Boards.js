@@ -37,7 +37,7 @@ module.exports = router;
 function authenticate(req, res) {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-        return res.status(422).json({ errors: errors.mapped() });
+        return res.status(422).json({errors: errors.array()});
     }
     console.log(req.body);
     userService.authenticate(req.body.email, req.body.password)
@@ -45,11 +45,11 @@ function authenticate(req, res) {
             if (user) { //authenticated
                 res.send(user);
             } else {
-                res.status(400).send({error_code:1, msg:'Email or password is incorrect'});
+                res.status(400).send({errors:[{msg:'Email or password is incorrect'}]});
             }
         })
         .catch(function (err) {
-            res.status(400).send({error_code:1, msg:err});
+            res.status(400).send({errors:[{msg:err}]});
         });
 }
 
@@ -57,14 +57,14 @@ function register(req, res) {
     console.log(req.body);
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-        return res.status(422).json({ errors: errors.mapped() });
+        return res.status(422).json({ errors: errors.array()});
     }
     userService.create(req.body)
         .then(function () {
             res.json({error_code:0});
         })
         .catch(function (err) {
-            res.status(400).send({error_code:1, msg:err});
+            res.status(400).json({errors:[{msg:err}]});
         });
 }
 
