@@ -19,6 +19,22 @@ router.get('/', function(req, res, next) {
     });
 });
 
+// get a team
+router.get('/:id', function(req, res, next) {
+    teamService.getTeam(req.params.id)
+    .then(function (teams) {
+        if (teams) {
+            res.status(200).json(teams);
+        } else {
+            res.sendStatus(404);
+        }
+    })
+    .catch(function (err) {
+        console.log(err);
+        res.status(400).send({error_code:1, msg:err});
+    });
+});
+
 //create team
 router.post('/', function(req, res, next) {
     delete req.body._id
