@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
-import { BoardsPreviewModalComponent } from '../boards-preview-modal/boards-preview-modal.component';
 
 @Component({
   selector: 'app-boards-preview',
@@ -9,12 +8,12 @@ import { BoardsPreviewModalComponent } from '../boards-preview-modal/boards-prev
 })
 export class BoardsPreviewComponent implements OnInit {
 
+  visible = false;
+
   constructor(public dialog: MatDialog) { }
   ngOnInit() { }
 
-  openModal() {
-    this.dialog.open(BoardsPreviewModalComponent, {
-      width: '250px'
-    });
+  toggle() {
+    this.visible = !this.visible;
   }
 }
