@@ -9,6 +9,8 @@ export class CardActions {
     static CARD_POST = 'CARD_POST';
     static CARD_PUT = 'CARD_PUT';
     static CARD_MOVE = 'CARD_MOVE';
+    static CARD_CHANGE_NAME = 'CARD_CHANGE_NAME';
+    static CARD_CHANGE_DESCRIPTION = 'CARD_CHANGE_DESCRIPTION';
 
     constructor(private ngRedux: NgRedux<IAppState>, private cardService: CardService) { }
 
@@ -40,10 +42,21 @@ export class CardActions {
         });
     }
 
-    put(card) {
-        this.ngRedux.dispatch({
-            type: CardActions.CARD_PUT,
-            payload: card
+    changeName(card) {
+        this.cardService.changeName(card).subscribe((r: any) => {
+            this.ngRedux.dispatch({
+                type: CardActions.CARD_CHANGE_NAME,
+                payload: card
+            });
+        });
+    }
+
+    changeDescription(card) {
+        this.cardService.changeDescription(card).subscribe((r: any) => {
+            this.ngRedux.dispatch({
+                type: CardActions.CARD_CHANGE_DESCRIPTION,
+                payload: card
+            });
         });
     }
 
