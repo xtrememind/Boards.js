@@ -15,15 +15,18 @@ import { IAppState, store } from './redux-actions/store/store';
 import { BoardActions } from './redux-actions/board.actions';
 import { CardActions } from './redux-actions/card.actions';
 import { ListActions } from './redux-actions/list.actions';
+import { TeamAction } from './redux-actions/team.actions';
 
 /** Services */
 import { UserService } from './services/user.service';
 import { BoardService } from './services/board.service';
 import { ListService } from './services/list.service';
+import { TeamService } from './services/team.service';
 
 /** Pages */
 import { HomeComponent } from './home/home.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { TeamBoardComponent } from './components/team/team-board.component';
 
 /** Other components */
 import { AppComponent } from './app.component';
@@ -40,6 +43,8 @@ import { BoardsPreviewModalComponent } from './components/topbar/boards-preview-
 import { MatMenuModule, MatToolbarModule, MatDialogModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CardService } from './services/card.service';
+import { TeamDashboardComponent } from './team-dashboard/team-dashboard.component';
+
 
 @NgModule({
   declarations: [
@@ -54,7 +59,9 @@ import { CardService } from './services/card.service';
     TopbarComponent,
     BoardsPreviewComponent,
     CardModalComponent,
-    BoardsPreviewModalComponent
+    BoardsPreviewModalComponent,
+    TeamBoardComponent,
+    TeamDashboardComponent
   ],
   imports: [
     BrowserModule,
@@ -74,9 +81,12 @@ import { CardService } from './services/card.service';
     ListActions,
     CardActions,
     AuthGuard,
+    
     BoardService,
     ListService,
-    CardService
+    CardService,
+    TeamService,
+    TeamAction
   ],
   entryComponents: [CardModalComponent, BoardsPreviewModalComponent],
   bootstrap: [AppComponent]
