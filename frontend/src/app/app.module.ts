@@ -34,7 +34,6 @@ import { BoardCardComponent } from './components/board/board-card/board-card.com
 import { TopbarComponent } from './components/topbar/topbar.component';
 import { BoardsPreviewComponent } from './components/topbar/boards-preview/boards-preview.component';
 import { CardModalComponent } from './components/board/card-modal/card-modal.component';
-import { BoardsPreviewModalComponent } from './components/topbar/boards-preview-modal/boards-preview-modal.component';
 
 /** Angular material */
 import { MatMenuModule, MatToolbarModule, MatDialogModule } from '@angular/material';
@@ -53,8 +52,7 @@ import { CardService } from './services/card.service';
     DashboardComponent,
     TopbarComponent,
     BoardsPreviewComponent,
-    CardModalComponent,
-    BoardsPreviewModalComponent
+    CardModalComponent
   ],
   imports: [
     BrowserModule,
@@ -78,7 +76,7 @@ import { CardService } from './services/card.service';
     ListService,
     CardService
   ],
-  entryComponents: [CardModalComponent, BoardsPreviewModalComponent],
+  entryComponents: [CardModalComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule {
