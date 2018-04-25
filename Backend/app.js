@@ -12,6 +12,8 @@ var usersRouter = require('./routes/users');
 var activityRouter=require('./routes/activities');
 var teamsRouter = require('./routes/teams');
 var membersRouter = require('./routes/members');
+var boardsRouter = require('./routes/boards');
+var listsRouter = require('./routes/lists');
 
 var app = express();
 
@@ -25,6 +27,8 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
 app.use(activitiesInterceptor);
 app.use('/', indexRouter);
@@ -32,6 +36,8 @@ app.use('/users', usersRouter);
 app.use('/activity',activityRouter);
 app.use('/teams', teamsRouter);
 app.use('/members', membersRouter);
+app.use('/boards', boardsRouter);
+app.use('/lists', listsRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
