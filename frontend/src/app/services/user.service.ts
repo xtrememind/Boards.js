@@ -11,12 +11,21 @@ export class UserService {
   private apiRoot: string = 'http://localhost:3000'
 
   //http://localhost:3000/users/register
- //register
+
   constructor(private httpClient: HttpClient) { }
 
   ResigterUser(user) {
     let body = JSON.stringify(user);
     return this.httpClient.post(`${this.apiRoot}/users/register`, body, httpOptions);
+  }
+
+  CheckAuthentication(user){
+    let body = JSON.stringify(user);
+    return this.httpClient.post(`${this.apiRoot}/users/auth`, body, httpOptions);
+  }
+
+  loggedIn(){
+    return !!localStorage.getItem('token');
   }
 
 }

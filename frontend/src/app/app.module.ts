@@ -4,6 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RoutingModule } from './routing/routing.module';
 import { NgRedux, NgReduxModule } from 'ng2-redux';
 import { HttpClientModule } from '@angular/common/http';
+import {AuthGuard} from './auth.guard';
 
 import { SortByPipe } from './pipes/sort-by.pipe';
 
@@ -45,7 +46,8 @@ import { BoardCardComponent } from './components/board/board-card/board-card.com
     UserService,
     BoardActions,
     ListActions,
-    CardActions
+    CardActions,
+    AuthGuard
   ],
   bootstrap: [AppComponent]
 })
