@@ -172,17 +172,14 @@ function updateListPosition(id, newPos) {
                 if (listArr[i]._id.toString() === id){
                     listArr[i].position = newPos;
                 }
-                else if (listArr[i].position > oldPos && listArr[i].position <= newPos){
-                    listArr[i].position --;
-                    shiftFlag = true;
-                }
-                else if (listArr[i].position > newPos && !shiftFlag) listArr[i].position ++;
+                else if (listArr[i].position > oldPos && listArr[i].position <= newPos) listArr[i].position --;
+                else if (listArr[i].position < oldPos && listArr[i].position >= newPos) listArr[i].position ++;
             }
             console.log(listArr);
-            // Board.findOneAndUpdate({'lists._id': id},{$pull :{'lists':{'_id': id}}},{new: true}, function (err, doc) {
-            //     if (err) deferred.reject({error_code:1, msg:err});
-            //     else deferred.resolve({error_code:0})
-            // });
+            Board.findOneAndUpdate({'lists._id': id},{$set :{'lists':listArr}},{new: true}, function (err, doc) {
+                if (err) deferred.reject({error_code:1, msg:err});
+                else deferred.resolve({error_code:0})
+            });
             deferred.resolve({error_code:0});
         });
     } catch (e) {
