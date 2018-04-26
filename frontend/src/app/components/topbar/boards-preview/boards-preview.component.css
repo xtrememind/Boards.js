@@ -19,3 +19,7 @@
   top: 44px;
   left: 0;
 }
+
+.board-preview-item {
+  cursor: pointer;
+}

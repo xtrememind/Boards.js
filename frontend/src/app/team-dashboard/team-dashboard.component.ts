@@ -29,4 +29,8 @@ export class TeamDashboardComponent implements OnInit {
       this.teamAction.get();
     });
   }
+
+  openMembersModal(id) {
+
+  }
 }

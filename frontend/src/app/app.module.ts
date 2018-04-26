@@ -44,6 +44,7 @@ import { CardModalActionsComponent } from './components/board/card-modal/card-mo
 import { CardModalDueComponent } from './components/board/card-modal/card-modal-due/card-modal-due.component';
 import { TeamCreateComponent } from './components/team/team-create/team-create.component';
 import { TeamBoardModalComponent } from './components/team/team-board-modal/team-board-modal.component';
+import { TeamMembersComponent } from './components/team/team-members/team-members.component';
 
 /** Angular material */
 import {
@@ -54,8 +55,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CardService } from './services/card.service';
 import { TeamDashboardComponent } from './team-dashboard/team-dashboard.component';
 import { MatIconModule } from '@angular/material/icon';
-
-// import { CardModelActivitiesComponent } from './components/board/card-modal/card-model-activities/card-model-activities.component';
 
 @NgModule({
   declarations: [
@@ -79,7 +78,8 @@ import { MatIconModule } from '@angular/material/icon';
     CardModalActionsComponent,
     CardModalDueComponent,
     TeamCreateComponent,
-    TeamBoardModalComponent
+    TeamBoardModalComponent,
+    TeamMembersComponent
     // ,CardModelActivitiesComponent
   ],
   imports: [

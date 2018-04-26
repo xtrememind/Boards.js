@@ -1,4 +1,4 @@
-import { Component, OnInit,Input } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -9,15 +9,14 @@ import { Router } from '@angular/router';
 export class TeamBoardComponent implements OnInit {
 
   @Input() board: any;
-  constructor(private _router:Router) { }
+  constructor(private _router: Router) { }
 
   ngOnInit() {
-    
+
   }
 
-  navigate(){
-    console.log(`${this.board._id} click`);
-    this._router.navigate([`/dashboard/${this.board._id}`]);
+  navigate() {
+    this._router.navigate(['/', 'dashboard', this.board._id]);
   }
 
 }

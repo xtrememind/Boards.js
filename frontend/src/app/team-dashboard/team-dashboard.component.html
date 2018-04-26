@@ -6,6 +6,7 @@
       <h2>
         <span>{{team.name}}</span>
         <button (click)="openBoardModal(team._id)">Create board...</button>
+        <button (click)="openMembersModal(team._id)">Add members...</button>
       </h2>
 
       <div *ngFor="let board of team.boards;" class="board">
