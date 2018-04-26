@@ -66,6 +66,19 @@ router.put('/:id' /*list ID*/, function(req, res, next) {
     });
 });
 
+// update card position
+router.put('/cards/position/', function(req, res, next) {
+    console.log(req.body);
+    listService.updateCardPosition(req.body.card, req.body.originList,  req.body.destinationList, req.body.position)
+    .then(function (result) {
+        res.json(result);
+    })
+    .catch(function (err) {
+        console.log(err);
+        res.status(400).send({error_code:1, msg:err});
+    });
+});
+
 // add card to a list
 router.put('/cards/:id' /*listId*/, function(req, res, next) {
     console.log(req.body);
@@ -108,19 +121,6 @@ router.delete('/cards/:id', function(req, res, next) {
 router.delete('/:id' /*list ID*/, function(req, res, next) {
 
     listService.deleteList(req.params.id)
-    .then(function (result) {
-        res.json(result);
-    })
-    .catch(function (err) {
-        console.log(err);
-        res.status(400).send({error_code:1, msg:err});
-    });
-});
-
-// update card position
-router.put('/cards/position/', function(req, res, next) {
-    console.log(req.body);
-    listService.updateCardPosition(req.body.card, req.body.originList,  req.body.destinationList, req.body.position)
     .then(function (result) {
         res.json(result);
     })
