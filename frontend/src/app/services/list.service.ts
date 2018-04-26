@@ -10,6 +10,7 @@ const httpOptions = {
 
 @Injectable()
 export class ListService {
+
   private apiRoot: String = `${config.api}/lists`;
 
   constructor(private httpClient: HttpClient) { }
@@ -24,6 +25,12 @@ export class ListService {
 
   put(list) {
     return this.httpClient.put(`${this.apiRoot}/${list._id}`, list, httpOptions);
+  }
+
+  move(movingList) {
+    return this.httpClient.put(`${config.api}/boards/lists/position/${movingList.list._id}`, {
+      newpos: movingList.position
+    }, httpOptions);
   }
 
   delete(list) {

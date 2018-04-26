@@ -74,9 +74,9 @@ export class CardActions {
     move(card) {
         // put
         const data = {
-            card: card.card.id,
-            originList: card.originList.id,
-            destinationList: card.destinationList.id,
+            card: card.card._id,
+            originList: card.originList._id,
+            destinationList: card.destinationList._id,
             position: card.position
         };
 
