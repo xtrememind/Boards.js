@@ -168,10 +168,10 @@ function addMember(id, member) {
     return deferred.promise;
 }
 
-function removeMember(id) {
+function removeMember(cardId, memberId) {
     var deferred = Q.defer();
     try {
-        Card.update({ 'cards._id': id }, { $pull: { 'members': { '_id': id } } }, { new: true }, function (err, doc) {
+        Card.update({ '_id': cardId }, { $pull: { 'members': { '_id': memberId } } }, { new: true }, function (err, doc) {
             if (err) deferred.reject({ error_code: 1, msg: err });
             else deferred.resolve({ error_code: 0 })
         });

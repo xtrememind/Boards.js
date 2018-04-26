@@ -1,5 +1,19 @@
 <div class="members">
   <h3>Members</h3>
-  <p *ngFor="let member of card.members">{{getInitials(member.name)}}</p>
-  <button>+</button>
+  <p *ngFor="let member of card.members">
+    <button [matMenuTriggerFor]="userActions">{{getInitials(member.name)}}</button>
+    <mat-menu #userActions="matMenu">
+      <button mat-menu-item (click)="removeUser(member)">Remove</button>
+    </mat-menu>
+
+  </p>
+  <button [matMenuTriggerFor]="usersMenu">+</button>
 </div>
+
+<mat-menu #usersMenu="matMenu">
+  <div *ngIf="users$ | async as users">
+    <div *ngFor="let user of users">
+      <button mat-menu-item (click)="addUser(user)">{{user.name}}</button>
+    </div>
+  </div>
+</mat-menu>

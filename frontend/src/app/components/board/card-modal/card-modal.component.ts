@@ -11,9 +11,7 @@ import { Observable } from 'rxjs/Observable';
 export class CardModalComponent implements OnInit {
   @select('card') public card$: Observable<any>;
 
-  constructor(
-    public dialogRef: MatDialogRef<CardModalComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any) { }
+  constructor(public dialogRef: MatDialogRef<CardModalComponent>) { }
 
   ngOnInit() { }
 

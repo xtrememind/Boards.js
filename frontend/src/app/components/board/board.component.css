@@ -11,7 +11,6 @@
 .board-container .list {
   position: relative;
   display: inline-block;
-  height: 100%;
   vertical-align: top;
   background-color: #e0e0e6;
   border-radius: 5px;

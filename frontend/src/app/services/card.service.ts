@@ -34,6 +34,14 @@ export class CardService {
     return this.httpClient.put(`${this.apiRoot}/duedate/${card._id}`, card);
   }
 
+  addMember(card, user) {
+    return this.httpClient.put(`${this.apiRoot}/members/${card._id}`, user, httpOptions);
+  }
+
+  removeMember(card, user) {
+    return this.httpClient.delete(`${this.apiRoot}/${card._id}/members/${user._id}`, httpOptions);
+  }
+
   delete(card) {
     return this.httpClient.delete(`${this.apiRoot}/${card._id}`, httpOptions);
   }

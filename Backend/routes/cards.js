@@ -130,8 +130,8 @@ router.put('/comments/:id' /*Card Id*/, function(req, res, next) {
 });
 
 // remove member from a card
-router.delete('/members/:id', function(req, res, next) {
-    cardService.removeMember(req.params.id)
+router.delete('/:id/members/:memberId', function(req, res, next) {
+    cardService.removeMember(req.params.id, req.params.memberId)
     .then(function (result) {
         res.json(result);
     })
