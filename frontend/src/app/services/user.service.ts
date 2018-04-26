@@ -27,8 +27,16 @@ export class UserService {
     return this.httpClient.post(`${this.apiRoot}/users/auth`, body, httpOptions);
   }
 
+  getUser(){
+    return this.httpClient.get(`${this.apiRoot}/users/user`);
+  }
+
   loggedIn() {
     return !!localStorage.getItem('token');
+  }
+
+  getTokenValue(){
+    return localStorage.getItem('token');
   }
 
 }

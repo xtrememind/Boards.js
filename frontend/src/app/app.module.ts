@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RoutingModule } from './routing/routing.module';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthGuard } from './auth.guard';
 
 /** Pipes */
@@ -22,6 +22,8 @@ import { UserService } from './services/user.service';
 import { BoardService } from './services/board.service';
 import { ListService } from './services/list.service';
 import { TeamService } from './services/team.service';
+import {TokenInterceptorService} from './services/token-interceptor.service';
+import {GlobalService} from './services/global.service';
 
 /** Pages */
 import { HomeComponent } from './home/home.component';
@@ -92,12 +94,19 @@ import { MatIconModule } from '@angular/material/icon';
     ListActions,
     CardActions,
     AuthGuard,
+  
 
     BoardService,
     ListService,
     CardService,
     TeamService,
-    TeamAction
+    TeamAction,
+    {
+      provide:HTTP_INTERCEPTORS,
+      useClass:TokenInterceptorService,
+      multi:true
+    },
+    GlobalService
   ],
   entryComponents: [CardModalComponent],
   bootstrap: [AppComponent]
