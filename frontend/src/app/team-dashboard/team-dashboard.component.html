@@ -1,23 +1,11 @@
+<app-topbar>
+</app-topbar>
+<div *ngIf="team$ | async as teams">
+  <div *ngFor="let team of teams; let listIndex = index" class="team">
+    <h2>{{team.name}}</h2>
 
-<app-topbar></app-topbar>
-<div class="board-container" *ngIf="team$ | async as teams">
-<div *ngFor="let team of teams; let listIndex = index">
-  <div>
-      {{team.name}}
-
-       <div *ngFor="let board of team.boards;">
-          <app-team-bard [board]="board"></app-team-bard>
-      </div> 
-
-
-      <!-- <div class="list">
-   sssss
+    <div *ngFor="let board of team.boards;" class="board">
+      <app-team-bard [board]="board"></app-team-bard>
+    </div>
   </div>
-  <div class="list">
-      sssss
-     </div>
-  </div> -->
-
- 
-</div>
 </div>
