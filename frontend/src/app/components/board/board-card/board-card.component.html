@@ -6,4 +6,9 @@
       {{card.dueDate | date: 'MMM d'}}
     </span>
   </p>
+  <span class="members" *ngIf="cards$ | async as cards">
+    <span class="member" *ngFor="let member of getMembers(cards)">
+      {{getInitials(member.name)}}
+    </span>
+  </span>
 </div>

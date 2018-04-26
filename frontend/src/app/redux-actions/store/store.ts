@@ -9,4 +9,5 @@ export interface IAppState {
     users: any;
     team: any;
     card: any;
+    cards: any;
 }
