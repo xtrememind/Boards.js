@@ -160,11 +160,15 @@ function updateCardDueDate(id, date) {
 }
 
 function removeCard(id) {
-    var deferred = Q.defer();
+    let deferred = Q.defer();
     try {
+        console.log('about to remove a card');
         List.update({'cards._id':id},{$pull :{'cards':{'_id': id}}},{new: true}, function (err, doc) {
             if (err) deferred.reject({error_code:1, msg:err});
-            else deferred.resolve({error_code:0})
+            else {
+                console.log('card removed');
+                deferred.resolve({error_code:0});
+                }
           });
     } catch (e) {
         deferred.reject(e.name + ': ' + e.message);
@@ -177,27 +181,35 @@ function updateCardPosition(cardId, oldListID, newListID, newPos) {
     var deferred = Q.defer();
     try {
         let card;
-        this.getList(oldListID)
+        getList(oldListID)
         .then(function (oldList) {
+            console.log('got the list' + oldList)
             if (oldList) {
-                for (let i =0; i < oldList.cards.length; i++)
+                for (let i =0; i < oldList[0].cards.length; i++)
                 {
-                    if (oldList.cards[i]._id.toString()=== cardId)
+                    if (oldList[0].cards[i]._id.toString()=== cardId)
                     {
-                        card = list.cards[i];
+                        card = oldList[0].cards[i];
                     }
                 }
-                this.removeCard(cardId)
+                console.log('got the old card' + card);
+                console.log('input card ID ' + cardId);
+                removeCard(cardId)
                 .then(function (result) {
                     card.position = newPos;
-                    this.getList(newListID)
+                    console.log('got the updated card' + card);
+                    getList(newListID)
                     .then(function (newList) {
-                        let newCards = newList.cards;
+                        console.log('got the the new list cards' + newList);
+                        let newCards = newList[0].cards;
+                        console.log('got the new cards before update ' + newCards);
                         for (let x = 0; x < newCards.length; x++){
                             if (newCards[x].position >= card.position ) newCards[x].position ++;
                         }
                         newCards.push(card);
-                        List.findOneAndUpdate({'cards._id': id},{$set :{'cards':newCards}},{new: true}, function (err, doc) {
+                        console.log('got the final list of cards' + newCards);
+                        let balancedCards = balanceCards(newCards);
+                        List.findOneAndUpdate({'_id': newListID},{$set :{'cards':balancedCards}},{new: true}, function (err, doc) {
                             if (err) deferred.reject({error_code:1, msg:err});
                             else deferred.resolve({error_code:0})
                         });
@@ -210,4 +222,19 @@ function updateCardPosition(cardId, oldListID, newListID, newPos) {
         deferred.reject(e.name + ': ' + e.message);
     }
     return deferred.promise;
+}
+function balanceCards(cards){
+    function compare(a,b) {
+        if (a.position < b.position)
+          return -1;
+        if (a.position > b.position)
+          return 1;
+        return 0;
+      };
+      cards.sort(compare);
+      for (let i = 0; i < cards.length; i++){
+        cards[i].position = i;
+      };
+      console.log('sorted cards: ' + cards)
+      return cards;
 }
