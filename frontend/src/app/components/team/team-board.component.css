@@ -1,10 +1,13 @@
 .list {
-    position: relative;
-    display: inline-block;
-    height: 100%;
-    vertical-align: top;
-    background-color: #e0e0e6;
-    border-radius: 5px;
-    margin: 5px;
-  }
-  
+  display: inline-block;
+  min-height: 90px;
+  width: 200px;
+  vertical-align: top;
+  color: #fff;
+  background-color: #0067a3;
+  border-radius: 5px;
+  margin: 0 15px 15px 0;
+  font-size: 13pt;
+  font-weight: bold;
+  padding: 5px;
+}

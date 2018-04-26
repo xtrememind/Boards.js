@@ -1,0 +1,15 @@
+.mat-input-container {
+  width: 100%;
+}
+
+button {
+  border: none;
+  min-width: 80px;
+  background-color: #dee0e0;
+  padding: 5px;
+  border-radius: 3px;
+  box-shadow: 0 1px 3px #aaa;
+  font-weight: normal;
+  font-size: 12pt;
+  margin-right: 20px;
+}

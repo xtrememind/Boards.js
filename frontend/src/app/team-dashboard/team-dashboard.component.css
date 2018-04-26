@@ -1,28 +1,45 @@
-.board-container {
-  display: block;
-  overflow-y: hidden;
-  overflow-x: auto;
-  height: 100%;
-  white-space: nowrap;
-  font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
-  font-size: 10pt;
+.team-container {
+  width: 80%;
+  margin: auto;
 }
 
-.board-container .list {
-  position: relative;
-  display: inline-block;
-  height: 100%;
-  vertical-align: top;
-  background-color: #e0e0e6;
-  border-radius: 5px;
+.team {
+  display: block;
+  font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
+  font-size: 10pt;
+  padding: 10px;
+  margin: 5px 5px 15px 5px;
+}
+
+.team h2 {
+  font-weight: bold;
+  font-size: 15pt;
   margin: 5px;
 }
 
-.board-container .list .title {
-  font-weight: bold;
-  font-size: 11pt;
+.team h2 span {
+  margin-right: 15px;
 }
 
-.board-container .list .drop-zone {
-  padding: 10px;
+.team h2 button {
+  border: none;
+  background-color: #dee0e0;
+  padding: 5px;
+  text-align: left;
+  border-radius: 3px;
+  box-shadow: 0 1px 3px #aaa;
+  font-weight: normal;
+  font-size: 12pt;
+  margin-right: 5px;
+}
+
+.board {
+  display: inline-block;
+  cursor: pointer;
+}
+
+@media (max-width: 1000px) {
+  .team-container {
+    width: 100%;
+  }
 }

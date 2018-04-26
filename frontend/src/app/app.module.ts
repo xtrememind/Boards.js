@@ -43,15 +43,21 @@ import { CardModalMembersComponent } from './components/board/card-modal/card-mo
 import { CardModalDescriptionComponent } from './components/board/card-modal/card-modal-description/card-modal-description.component';
 import { CardModalTitleComponent } from './components/board/card-modal/card-modal-title/card-modal-title.component';
 import { CardModalActionsComponent } from './components/board/card-modal/card-modal-actions/card-modal-actions.component';
+import { CardModalDueComponent } from './components/board/card-modal/card-modal-due/card-modal-due.component';
+import { TeamCreateComponent } from './components/team/team-create/team-create.component';
+import { TeamBoardModalComponent } from './components/team/team-board-modal/team-board-modal.component';
+import { TeamMembersModalComponent } from './components/team/team-members-modal/team-members-modal.component';
 
 /** Angular material */
-import { MatMenuModule, MatToolbarModule, MatDialogModule } from '@angular/material';
+import {
+  MatMenuModule, MatToolbarModule, MatDialogModule,
+  MatDatepickerModule, MatNativeDateModule, MatFormFieldModule, MatInputModule
+} from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CardService } from './services/card.service';
 import { TeamDashboardComponent } from './team-dashboard/team-dashboard.component';
-
 import { MatIconModule } from '@angular/material/icon';
-// import { CardModelActivitiesComponent } from './components/board/card-modal/card-model-activities/card-model-activities.component';
+import { UserActions } from './redux-actions/user.actions';
 
 @NgModule({
   declarations: [
@@ -72,8 +78,11 @@ import { MatIconModule } from '@angular/material/icon';
     CardModalMembersComponent,
     CardModalDescriptionComponent,
     CardModalTitleComponent,
-    CardModalActionsComponent
-    // ,CardModelActivitiesComponent
+    CardModalActionsComponent,
+    CardModalDueComponent,
+    TeamCreateComponent,
+    TeamBoardModalComponent,
+    TeamMembersModalComponent
   ],
   imports: [
     BrowserModule,
@@ -86,21 +95,28 @@ import { MatIconModule } from '@angular/material/icon';
     MatToolbarModule,
     BrowserAnimationsModule,
     MatDialogModule,
-    MatIconModule
+    MatIconModule,
+    MatNativeDateModule,
+    MatDatepickerModule,
+    MatFormFieldModule,
+    MatInputModule
   ],
   providers: [
-    UserService,
-    BoardActions,
-    ListActions,
-    CardActions,
     AuthGuard,
   
 
+    UserService,
     BoardService,
     ListService,
     CardService,
     TeamService,
     TeamAction,
+    BoardActions,
+    ListActions,
+    CardActions,
+    TeamAction,
+    UserActions,
+
     {
       provide:HTTP_INTERCEPTORS,
       useClass:TokenInterceptorService,
@@ -108,7 +124,7 @@ import { MatIconModule } from '@angular/material/icon';
     },
     GlobalService
   ],
-  entryComponents: [CardModalComponent],
+  entryComponents: [CardModalComponent, TeamBoardModalComponent, TeamMembersModalComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule {

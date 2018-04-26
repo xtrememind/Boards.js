@@ -1,23 +1,22 @@
+<app-topbar>
+</app-topbar>
+<div class="team-container">
+  <div *ngIf="team$ | async as teams">
+    <div *ngFor="let team of teams; let listIndex = index" class="team">
+      <h2>
+        <span>{{team.name}}</span>
+        <button (click)="openBoardModal(team)">Create board...</button>
+        <button (click)="openMembersModal(team)">Add members...</button>
+      </h2>
 
-<app-topbar></app-topbar>
-<div class="board-container" *ngIf="team$ | async as teams">
-<div *ngFor="let team of teams; let listIndex = index">
-  <div>
-      {{team.name}}
-
-       <div *ngFor="let board of team.boards;">
-          <app-team-bard [board]="board"></app-team-bard>
-      </div> 
-
-
-      <!-- <div class="list">
-   sssss
+      <div *ngFor="let board of team.boards;" class="board">
+        <app-team-bard [board]="board"></app-team-bard>
+      </div>
+    </div>
   </div>
-  <div class="list">
-      sssss
-     </div>
-  </div> -->
-
- 
-</div>
+  <div class="team">
+    <h2>
+      <app-team-create></app-team-create>
+    </h2>
+  </div>
 </div>

@@ -13,6 +13,7 @@ export class BoardCardComponent implements OnInit {
 
   @Input() card: any;
   @Input() list: any;
+  @Input() boardId: any;
 
   constructor(public dialog: MatDialog, private cardActions: CardActions, private listActions: ListActions) { }
   ngOnInit() { }
@@ -20,8 +21,7 @@ export class BoardCardComponent implements OnInit {
   openModal() {
     this.cardActions.get(this.card._id);
     const dialogRef = this.dialog.open(CardModalComponent, {
-      width: '750px',
-      data: this.card
+      width: '750px'
     });
 
     dialogRef.beforeClose().subscribe(result => {

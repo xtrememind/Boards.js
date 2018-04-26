@@ -1,0 +1,30 @@
+.due h3 {
+  color: #93989b;
+  font-size: 11pt;
+  font-weight: bold;
+}
+
+.due div {
+  padding-left: 4px;
+}
+
+.due button {
+  background-color: #c3c8cb;
+  border-radius: 3px;
+  border: none;
+  padding: 0 10px;
+}
+
+.due p {
+  font-size: 10pt;
+  display: inline-block;
+  margin-left: 5px;
+}
+
+.hidden-field {
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow: hidden;
+  height: 0px !important;
+  width: 0px !important;
+}

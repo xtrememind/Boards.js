@@ -7,8 +7,7 @@ const httpOptions = {
 
 @Injectable()
 export class TeamService {
-
-  private apiRoot: string = 'http://localhost:3001'
+  private apiRoot: String = 'http://localhost:3001';
 
   constructor(private httpClient: HttpClient) { }
 
@@ -17,5 +16,11 @@ export class TeamService {
   }
 
 
+  post(team) {
+    return this.httpClient.post(`${this.apiRoot}/teams`, team);
+  }
 
+  addMember(team, member) {
+    return this.httpClient.put(`${this.apiRoot}/teams/members/${team._id}`, member);
+  }
 }

@@ -11,7 +11,7 @@
       (drop)="drop(list, listIndex, cardIndex)">
 
       <div draggable="true" (dragstart)="dragCard(list, card)">
-        <app-board-card [card]="card" [list]="list"></app-board-card>
+        <app-board-card [card]="card" [list]="list" [boardId]="boardId"></app-board-card>
       </div>
 
     </div>

@@ -12,7 +12,10 @@ export class CardActions {
     static CARD_MOVE = 'CARD_MOVE';
     static CARD_CHANGE_NAME = 'CARD_CHANGE_NAME';
     static CARD_CHANGE_DESCRIPTION = 'CARD_CHANGE_DESCRIPTION';
+    static CARD_CHANGE_DUEDATE = 'CARD_CHANGE_DUEDATE';
     static CARD_DELETE = 'CARD_DELETE';
+    static CARD_ADDMEMBER = 'CARD_ADDMEMBER';
+    static CARD_REMOVEMEMBER = 'CARD_REMOVEMEMBER';
 
     constructor(private ngRedux: NgRedux<IAppState>, private cardService: CardService) { }
 
@@ -62,23 +65,43 @@ export class CardActions {
         });
     }
 
-    move(card) {
-        // put
-        const data = {
-            card: card.card.id,
-            originList: card.originList.id,
-            destinationList: card.destinationList.id,
-            position: card.position
-        };
+    changeDueDate(card) {
+        this.cardService.changeDueDate(card).subscribe((r: any) => {
+            this.ngRedux.dispatch({
+                type: CardActions.CARD_CHANGE_DUEDATE,
+                payload: card
+            });
+        });
+    }
 
-        this.ngRedux.dispatch({
-            type: CardActions.CARD_MOVE,
-            payload: card
+    move(card) {
+        this.cardService.move(card).subscribe((r: any) => {
+            console.log(r);
+            this.ngRedux.dispatch({
+                type: CardActions.CARD_MOVE,
+                payload: card
+            });
+        }, err => console.log(err));
+    }
+
+    addMember(card, user) {
+        this.cardService.addMember(card, user).subscribe((r: any) => {
+            this.get(card._id);
+        });
+    }
+
+    removeMember(card, user) {
+        this.cardService.removeMember(card, user).subscribe((r: any) => {
+            this.get(card._id);
         });
     }
 
     delete(card) {
         this.cardService.delete(card).subscribe((r: any) => {
+            this.ngRedux.dispatch({
+                type: CardActions.CARD_DELETE,
+                payload: card
+            });
         });
     }
 }
