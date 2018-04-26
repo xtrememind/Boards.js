@@ -8,7 +8,7 @@ import {GlobalService} from '../../services/global.service';
 })
 export class TopbarComponent implements OnInit {
 
-  constructor(private global :GlobalService) { }
+  constructor(public global :GlobalService) { }
 
   ngOnInit() {
   }
