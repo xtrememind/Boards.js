@@ -42,6 +42,15 @@ export class CardService {
     return this.httpClient.delete(`${this.apiRoot}/${card._id}/members/${user._id}`, httpOptions);
   }
 
+  move(card) {
+    return this.httpClient.put(`${config.api}/lists/cards/position`, {
+      card: card.card._id,
+      originList: card.originList._id,
+      destinationList: card.destinationList._id,
+      position: card.position
+    }, httpOptions);
+  }
+
   delete(card) {
     return this.httpClient.delete(`${this.apiRoot}/${card._id}`, httpOptions);
   }

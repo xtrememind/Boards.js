@@ -75,18 +75,13 @@ export class CardActions {
     }
 
     move(card) {
-        // put
-        const data = {
-            card: card.card._id,
-            originList: card.originList._id,
-            destinationList: card.destinationList._id,
-            position: card.position
-        };
-
-        this.ngRedux.dispatch({
-            type: CardActions.CARD_MOVE,
-            payload: card
-        });
+        this.cardService.move(card).subscribe((r: any) => {
+            console.log(r);
+            this.ngRedux.dispatch({
+                type: CardActions.CARD_MOVE,
+                payload: card
+            });
+        }, err => console.log(err));
     }
 
     addMember(card, user) {
