@@ -41,9 +41,10 @@ import { CardModalMembersComponent } from './components/board/card-modal/card-mo
 import { CardModalDescriptionComponent } from './components/board/card-modal/card-modal-description/card-modal-description.component';
 import { CardModalTitleComponent } from './components/board/card-modal/card-modal-title/card-modal-title.component';
 import { CardModalActionsComponent } from './components/board/card-modal/card-modal-actions/card-modal-actions.component';
+import { CardModalDueComponent } from './components/board/card-modal/card-modal-due/card-modal-due.component';
 
 /** Angular material */
-import { MatMenuModule, MatToolbarModule, MatDialogModule } from '@angular/material';
+import { MatMenuModule, MatToolbarModule, MatDialogModule, MatDatepickerModule, MatNativeDateModule, MatFormFieldModule, MatInputModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CardService } from './services/card.service';
 import { TeamDashboardComponent } from './team-dashboard/team-dashboard.component';
@@ -70,7 +71,8 @@ import { MatIconModule } from '@angular/material/icon';
     CardModalMembersComponent,
     CardModalDescriptionComponent,
     CardModalTitleComponent,
-    CardModalActionsComponent
+    CardModalActionsComponent,
+    CardModalDueComponent
     // ,CardModelActivitiesComponent
   ],
   imports: [
@@ -84,7 +86,11 @@ import { MatIconModule } from '@angular/material/icon';
     MatToolbarModule,
     BrowserAnimationsModule,
     MatDialogModule,
-    MatIconModule
+    MatIconModule,
+    MatNativeDateModule,
+    MatDatepickerModule,
+    MatFormFieldModule,
+    MatInputModule
   ],
   providers: [
     UserService,

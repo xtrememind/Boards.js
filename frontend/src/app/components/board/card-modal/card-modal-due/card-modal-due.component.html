@@ -1,0 +1,14 @@
+<div class="due">
+  <h3>Due date</h3>
+  <div *ngIf="card.dueDate">
+    <button (click)="remove()">-</button>
+    <p>{{card.dueDate | date: 'MMM d'}}</p>
+  </div>
+  <div *ngIf="!card.dueDate">
+    <mat-form-field class="hidden-field">
+      <input matInput MatFormFieldControl [matDatepicker]="picker" [(ngModel)]="card.dueDate" (dateChange)="save()" />
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+    <button (click)="picker.open()" mat-raised-button>+</button>
+  </div>
+</div>
