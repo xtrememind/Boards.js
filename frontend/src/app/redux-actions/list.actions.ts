@@ -67,12 +67,11 @@ export class ListActions {
     }
 
     move(movingList) {
-        console.log(`list ${movingList.list._id} changed to ${movingList.position}`);
-        // TODO: Post
-
-        this.ngRedux.dispatch({
-            type: ListActions.LIST_MOVE,
-            payload: movingList
+        this.listService.move(movingList).subscribe((r: any) => {
+            this.ngRedux.dispatch({
+                type: ListActions.LIST_MOVE,
+                payload: movingList
+            });
         });
     }
 
