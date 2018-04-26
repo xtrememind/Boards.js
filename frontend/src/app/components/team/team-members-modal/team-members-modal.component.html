@@ -1,0 +1,14 @@
+<h1 mat-dialog-title>Members of {{data.name}}</h1>
+<div mat-dialog-content class="team-members">
+  <h2>Add a new member</h2>
+  <div *ngIf="users$ | async as users">
+    <select (change)="addUser(users, $event.target.value)">
+      <option value="EMPTYVALUE"> </option>
+      <option *ngFor="let user of users" value="{{user._id}}">{{user.name}}</option>
+    </select>
+  </div>
+  <h2>Members of the team</h2>
+  <ul>
+    <li *ngFor="let member of data.members">{{member.name}}</li>
+  </ul>
+</div>

@@ -10,7 +10,6 @@ const httpOptions = {
 
 @Injectable()
 export class UserService {
-
   private apiRoot: String = config.api;
 
   //http://localhost:3000/users/register
@@ -31,4 +30,7 @@ export class UserService {
     return !!localStorage.getItem('token');
   }
 
+  getAll() {
+    return this.httpClient.get(`${this.apiRoot}/users`, httpOptions);
+  }
 }

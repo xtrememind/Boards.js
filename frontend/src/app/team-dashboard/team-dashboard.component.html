@@ -5,8 +5,8 @@
     <div *ngFor="let team of teams; let listIndex = index" class="team">
       <h2>
         <span>{{team.name}}</span>
-        <button (click)="openBoardModal(team._id)">Create board...</button>
-        <button (click)="openMembersModal(team._id)">Add members...</button>
+        <button (click)="openBoardModal(team)">Create board...</button>
+        <button (click)="openMembersModal(team)">Add members...</button>
       </h2>
 
       <div *ngFor="let board of team.boards;" class="board">

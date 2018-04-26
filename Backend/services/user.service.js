@@ -12,6 +12,7 @@ service.create = create; // create new user
 service.authenticate = authenticate; // authenticate the user
 service.activate = activate; // activate the user account
 service.getByJWT = getByJWT; // read the user data from JWT
+service.getAll = getAll;
 service.update = update; // update the user data
 
 module.exports = service;
@@ -102,6 +103,21 @@ function getByJWT(jwtToken) {
         deferred.reject(e.name + ': ' + e.message);
     }
 
+    return deferred.promise;
+}
+
+function getAll(){
+    var deferred = Q.defer();
+    try {
+        User.find({})
+            .exec(function(err, results) {
+                console.log(results);
+                if (err) deferred.reject({error_code:1, msg:err});
+                else deferred.resolve(results);
+            });
+    } catch (e) {
+        deferred.reject(e.name + ': ' + e.message);
+    }
     return deferred.promise;
 }
 
