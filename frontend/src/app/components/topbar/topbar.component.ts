@@ -7,10 +7,14 @@ import {GlobalService} from '../../services/global.service';
   styleUrls: ['./topbar.component.css']
 })
 export class TopbarComponent implements OnInit {
+  userName:string="";
+
 
   constructor(public global :GlobalService) { }
 
   ngOnInit() {
+    this.userName=localStorage.getItem('name');
+    console.log(this.userName);
   }
 
 }
