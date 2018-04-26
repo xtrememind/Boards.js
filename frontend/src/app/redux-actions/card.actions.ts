@@ -16,6 +16,7 @@ export class CardActions {
     static CARD_DELETE = 'CARD_DELETE';
     static CARD_ADDMEMBER = 'CARD_ADDMEMBER';
     static CARD_REMOVEMEMBER = 'CARD_REMOVEMEMBER';
+    static CARD_ADDCARDTOLIST = 'CARD_ADDCARDTOLIST';
 
     constructor(private ngRedux: NgRedux<IAppState>, private cardService: CardService) { }
 
@@ -101,6 +102,15 @@ export class CardActions {
             this.ngRedux.dispatch({
                 type: CardActions.CARD_DELETE,
                 payload: card
+            });
+        });
+    }
+
+    addCardToList(card) {
+        this.cardService.get(card._id).subscribe((result: any) => {
+            this.ngRedux.dispatch({
+                type: CardActions.CARD_ADDCARDTOLIST,
+                payload: result[0]
             });
         });
     }
