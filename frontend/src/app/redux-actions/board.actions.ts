@@ -9,10 +9,12 @@ import { TeamAction } from './team.actions';
 export class BoardActions {
     static BOARD_GET = 'BOARD_GET';
 
-    constructor(private ngRedux: NgRedux<IAppState>, private boardService: BoardService, 
+    constructor(private ngRedux: NgRedux<IAppState>, private boardService: BoardService,
         private listActions: ListActions, private teamActions: TeamAction) { }
 
     get(id) {
+        this.listActions.clear();
+
         this.boardService.get(id).subscribe((board: any) => {
             this.ngRedux.dispatch({
                 type: BoardActions.BOARD_GET,

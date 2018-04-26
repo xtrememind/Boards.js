@@ -19,10 +19,10 @@ export class TeamBoardModalComponent implements OnInit {
 
   save() {
     this.boardActions.post({
-      team: this.data,
+      team: this.data._id,
       name: this.boardName
     });
-    
+
     this.close();
   }
 

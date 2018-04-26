@@ -7,6 +7,7 @@ import { boardReducer } from './board.reducer';
 import { cardReducer } from './card.reducer';
 import { listReducer } from './list.reducer';
 import { teamReducer } from './team.reducer';
+import { userReducer } from './user.reducer';
 
 const initial: IAppState = {
   board: {
@@ -15,6 +16,7 @@ const initial: IAppState = {
   },
   lists: [],
   team: [],
+  users: [],
   card: {}
 };
 
@@ -24,7 +26,8 @@ export function reducer(state: IAppState = initial, action) {
     boardReducer,
     listReducer,
     cardReducer,
-    teamReducer
+    teamReducer,
+    userReducer
   ];
 
   for (const reducerFunction of reducers) {

@@ -5,6 +5,7 @@ import { CardService } from '../services/card.service';
 
 @Injectable()
 export class CardActions {
+
     static CARD_GET = 'CARD_GET';
     static CARD_POST = 'CARD_POST';
     static CARD_PUT = 'CARD_PUT';
@@ -13,6 +14,8 @@ export class CardActions {
     static CARD_CHANGE_DESCRIPTION = 'CARD_CHANGE_DESCRIPTION';
     static CARD_CHANGE_DUEDATE = 'CARD_CHANGE_DUEDATE';
     static CARD_DELETE = 'CARD_DELETE';
+    static CARD_ADDMEMBER = 'CARD_ADDMEMBER';
+    static CARD_REMOVEMEMBER = 'CARD_REMOVEMEMBER';
 
     constructor(private ngRedux: NgRedux<IAppState>, private cardService: CardService) { }
 
@@ -79,6 +82,18 @@ export class CardActions {
                 payload: card
             });
         }, err => console.log(err));
+    }
+
+    addMember(card, user) {
+        this.cardService.addMember(card, user).subscribe((r: any) => {
+            this.get(card._id);
+        });
+    }
+
+    removeMember(card, user) {
+        this.cardService.removeMember(card, user).subscribe((r: any) => {
+            this.get(card._id);
+        });
     }
 
     delete(card) {

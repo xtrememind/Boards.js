@@ -2,6 +2,18 @@
 
 <div class="sidebar" *ngIf="visible">
   <div class="sidebar-content">
-    <h1>Here we are going to load the boards</h1>
+    <div class="team-container">
+      <div *ngIf="team$ | async as teams">
+        <div *ngFor="let team of teams; let listIndex = index" class="team">
+          <h2>
+            <span>{{team.name}}</span>
+          </h2>
+
+          <div *ngFor="let board of team.boards;" class="board-preview-item">
+            <app-team-bard [board]="board"></app-team-bard>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

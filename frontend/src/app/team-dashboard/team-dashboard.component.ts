@@ -4,6 +4,7 @@ import { Observable } from 'rxjs/Observable';
 import { TeamAction } from '../redux-actions/team.actions';
 import { MatDialog } from '@angular/material';
 import { TeamBoardModalComponent } from '../components/team/team-board-modal/team-board-modal.component';
+import { TeamMembersModalComponent } from '../components/team/team-members-modal/team-members-modal.component';
 
 @Component({
   selector: 'app-team-dashboard',
@@ -19,14 +20,25 @@ export class TeamDashboardComponent implements OnInit {
     this.teamAction.get();
   }
 
-  openBoardModal(id) {
+  openBoardModal(team) {
     const dialogRef = this.dialog.open(TeamBoardModalComponent, {
       width: '750px',
-      data: id
+      data: team
     });
 
     dialogRef.beforeClose().subscribe(result => {
       this.teamAction.get();
+    });
+  }
+
+  openMembersModal(team) {
+    const dialogRef = this.dialog.open(TeamMembersModalComponent, {
+      width: '750px',
+      data: team
+    });
+
+    dialogRef.beforeClose().subscribe(result => {
+      console.log('congratulations, you updated a team and nothing happened XD');
     });
   }
 }

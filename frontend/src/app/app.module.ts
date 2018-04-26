@@ -44,6 +44,7 @@ import { CardModalActionsComponent } from './components/board/card-modal/card-mo
 import { CardModalDueComponent } from './components/board/card-modal/card-modal-due/card-modal-due.component';
 import { TeamCreateComponent } from './components/team/team-create/team-create.component';
 import { TeamBoardModalComponent } from './components/team/team-board-modal/team-board-modal.component';
+import { TeamMembersModalComponent } from './components/team/team-members-modal/team-members-modal.component';
 
 /** Angular material */
 import {
@@ -54,8 +55,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CardService } from './services/card.service';
 import { TeamDashboardComponent } from './team-dashboard/team-dashboard.component';
 import { MatIconModule } from '@angular/material/icon';
-
-// import { CardModelActivitiesComponent } from './components/board/card-modal/card-model-activities/card-model-activities.component';
+import { UserActions } from './redux-actions/user.actions';
 
 @NgModule({
   declarations: [
@@ -79,8 +79,8 @@ import { MatIconModule } from '@angular/material/icon';
     CardModalActionsComponent,
     CardModalDueComponent,
     TeamCreateComponent,
-    TeamBoardModalComponent
-    // ,CardModelActivitiesComponent
+    TeamBoardModalComponent,
+    TeamMembersModalComponent
   ],
   imports: [
     BrowserModule,
@@ -100,19 +100,21 @@ import { MatIconModule } from '@angular/material/icon';
     MatInputModule
   ],
   providers: [
-    UserService,
-    BoardActions,
-    ListActions,
-    CardActions,
     AuthGuard,
 
+    UserService,
     BoardService,
     ListService,
     CardService,
     TeamService,
-    TeamAction
+
+    BoardActions,
+    ListActions,
+    CardActions,
+    TeamAction,
+    UserActions
   ],
-  entryComponents: [CardModalComponent, TeamBoardModalComponent],
+  entryComponents: [CardModalComponent, TeamBoardModalComponent, TeamMembersModalComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule {
