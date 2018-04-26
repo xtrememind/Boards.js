@@ -1,13 +1,16 @@
 import { Injectable } from '@angular/core';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 
+declare const require: any;
+const config = require('../../../config.json');
+
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 };
 
 @Injectable()
 export class TeamService {
-  private apiRoot: String = 'http://localhost:3001';
+  private apiRoot: String = config.api;
 
   constructor(private httpClient: HttpClient) { }
 
