@@ -42,14 +42,19 @@ import { CardModalDescriptionComponent } from './components/board/card-modal/car
 import { CardModalTitleComponent } from './components/board/card-modal/card-modal-title/card-modal-title.component';
 import { CardModalActionsComponent } from './components/board/card-modal/card-modal-actions/card-modal-actions.component';
 import { CardModalDueComponent } from './components/board/card-modal/card-modal-due/card-modal-due.component';
+import { TeamCreateComponent } from './components/team/team-create/team-create.component';
+import { TeamBoardModalComponent } from './components/team/team-board-modal/team-board-modal.component';
 
 /** Angular material */
-import { MatMenuModule, MatToolbarModule, MatDialogModule, MatDatepickerModule, MatNativeDateModule, MatFormFieldModule, MatInputModule } from '@angular/material';
+import {
+  MatMenuModule, MatToolbarModule, MatDialogModule,
+  MatDatepickerModule, MatNativeDateModule, MatFormFieldModule, MatInputModule
+} from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CardService } from './services/card.service';
 import { TeamDashboardComponent } from './team-dashboard/team-dashboard.component';
-
 import { MatIconModule } from '@angular/material/icon';
+
 // import { CardModelActivitiesComponent } from './components/board/card-modal/card-model-activities/card-model-activities.component';
 
 @NgModule({
@@ -72,7 +77,9 @@ import { MatIconModule } from '@angular/material/icon';
     CardModalDescriptionComponent,
     CardModalTitleComponent,
     CardModalActionsComponent,
-    CardModalDueComponent
+    CardModalDueComponent,
+    TeamCreateComponent,
+    TeamBoardModalComponent
     // ,CardModelActivitiesComponent
   ],
   imports: [
@@ -105,7 +112,7 @@ import { MatIconModule } from '@angular/material/icon';
     TeamService,
     TeamAction
   ],
-  entryComponents: [CardModalComponent],
+  entryComponents: [CardModalComponent, TeamBoardModalComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule {

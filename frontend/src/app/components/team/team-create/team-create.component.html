@@ -1,0 +1,4 @@
+<span *ngIf="!createMode" class="create" (click)="create()">
+  Create a team...
+</span>
+<input type="text" *ngIf="createMode" (keydown.enter)="save($event)" (keydown.esc)="reset()" (focusout)="reset()"/>

@@ -10,13 +10,18 @@ const httpOptions = {
 
 @Injectable()
 export class BoardService {
-
   private apiRoot: String = `${config.api}/boards`;
 
   constructor(private httpClient: HttpClient) { }
 
   get(id) {
     return this.httpClient.get(`${this.apiRoot}/${id}`, httpOptions);
+  }
+
+  post(board) {
+    return this.httpClient.post(`${this.apiRoot}/${board.team}`, {
+      name: board.name
+    }, httpOptions);
   }
 
 }
