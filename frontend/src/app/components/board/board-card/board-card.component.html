@@ -5,10 +5,10 @@
     <span class="date">
       {{card.dueDate | date: 'MMM d'}}
     </span>
-    <span class="cards" *ngIf="cards$ | async as cards">
-      <span *ngFor="let member of getMembers(cards)">
-        {{member.name}}
-      </span>
-    </span>
   </p>
+  <span class="members" *ngIf="cards$ | async as cards">
+    <span class="member" *ngFor="let member of getMembers(cards)">
+      {{getInitials(member.name)}}
+    </span>
+  </span>
 </div>

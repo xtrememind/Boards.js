@@ -12,6 +12,9 @@ export function cardReducer(state: IAppState, action): IAppState {
         case CardActions.CARD_MOVE:
             moveCard(action.payload);
             return state;
+        case CardActions.CARD_ADDCARDTOLIST:
+            addCardToList(state, action);
+            return state;
         default: return null;
     }
 
@@ -34,5 +37,14 @@ export function cardReducer(state: IAppState, action): IAppState {
         }
     }
 
+    function addCardToList(state, action) {
+        if (state.cards.some(c => c._id && c._id === action.payload._id)) {
+            const card = state.cards.filter(c => c._id === action.payload._id)[0];
+            const index = state.cards.indexOf(card);
+            state.cards.splice(index, 1);
+        }
+
+        state.cards.push(action.payload);
+    }
 
 }
