@@ -117,4 +117,17 @@ router.delete('/:id' /*list ID*/, function(req, res, next) {
     });
 });
 
+// update card position
+router.put('/cards/position/', function(req, res, next) {
+    console.log(req.body);
+    listService.updateCardPosition(req.body.card, req.body.originList,  req.body.destinationList, req.body.position)
+    .then(function (result) {
+        res.json(result);
+    })
+    .catch(function (err) {
+        console.log(err);
+        res.status(400).send({error_code:1, msg:err});
+    });
+});
+
 module.exports = router;

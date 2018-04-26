@@ -14,7 +14,7 @@ service.deleteList = deleteList;
 service.addCard = addCard;
 service.updateCardName = updateCardName;
 service.updateCardDueDate = updateCardDueDate;
-//service.updateListPosition = updateListPosition;
+service.updateCardPosition = updateCardPosition;
 service.removeCard = removeCard;
 
 module.exports = service;
@@ -166,6 +166,46 @@ function removeCard(id) {
             if (err) deferred.reject({error_code:1, msg:err});
             else deferred.resolve({error_code:0})
           });
+    } catch (e) {
+        deferred.reject(e.name + ': ' + e.message);
+    }
+    return deferred.promise;
+}
+
+
+function updateCardPosition(cardId, oldListID, newListID, newPos) {
+    var deferred = Q.defer();
+    try {
+        let card;
+        this.getList(oldListID)
+        .then(function (oldList) {
+            if (oldList) {
+                for (let i =0; i < oldList.cards.length; i++)
+                {
+                    if (oldList.cards[i]._id.toString()=== cardId)
+                    {
+                        card = list.cards[i];
+                    }
+                }
+                this.removeCard(cardId)
+                .then(function (result) {
+                    card.position = newPos;
+                    this.getList(newListID)
+                    .then(function (newList) {
+                        let newCards = newList.cards;
+                        for (let x = 0; x < newCards.length; x++){
+                            if (newCards[x].position >= card.position ) newCards[x].position ++;
+                        }
+                        newCards.push(card);
+                        List.findOneAndUpdate({'cards._id': id},{$set :{'cards':newCards}},{new: true}, function (err, doc) {
+                            if (err) deferred.reject({error_code:1, msg:err});
+                            else deferred.resolve({error_code:0})
+                        });
+                        deferred.resolve({error_code:0});
+                    });
+                });
+            }
+        });
     } catch (e) {
         deferred.reject(e.name + ': ' + e.message);
     }
