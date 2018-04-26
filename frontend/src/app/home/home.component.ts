@@ -107,6 +107,7 @@ export class HomeComponent implements OnInit {
   fetchUserName(){
     this.userService.getUser().subscribe(data=>{
       this.global.name=data["name"];
+      localStorage.setItem('name',data["name"]);
     });
   }
 
