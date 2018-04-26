@@ -1,5 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { UserService } from '../services/user.service'
+import { UserService } from '../services/user.service';
+import { Router } from '@angular/router';
+import {GlobalService} from '../services/global.service';
 
 @Component({
   selector: 'app-home',
@@ -9,7 +11,7 @@ import { UserService } from '../services/user.service'
 
 export class HomeComponent implements OnInit {
 
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService,private _router:Router,private global:GlobalService) { }
 
   @ViewChild('formLog')
   formLog: any;
@@ -41,6 +43,8 @@ export class HomeComponent implements OnInit {
           console.log(data);
           this.saveTokenLocalStorage(data);
           this.onCancleLogIn();
+          this.fetchUserName();
+          this._router.navigate(['/team']);
         },
         err => {
           console.log(err);
@@ -85,16 +89,25 @@ export class HomeComponent implements OnInit {
 
   onCancleLogIn() {
     this.formLog.reset();
+    document.getElementById('id01').style.display='none'
+   
   }
 
   
   onCancleSignUp() {
     this.formSign.reset();
+    document.getElementById('id02').style.display='none'
+    
   }
 
   saveTokenLocalStorage(res){
     localStorage.setItem('token',res.token);
   }
 
+  fetchUserName(){
+    this.userService.getUser().subscribe(data=>{
+      this.global.name=data["name"];
+    });
+  }
 
 }
