@@ -9,5 +9,4 @@ export class GlobalService implements OnInit {
     this.name = '';
   }
   
-  
 }
