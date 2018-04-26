@@ -3,12 +3,14 @@ import { IAppState } from './store/store';
 import { NgRedux } from 'ng2-redux';
 import { BoardService } from '../services/board.service';
 import { ListActions } from './list.actions';
+import { TeamAction } from './team.actions';
 
 @Injectable()
 export class BoardActions {
     static BOARD_GET = 'BOARD_GET';
 
-    constructor(private ngRedux: NgRedux<IAppState>, private boardService: BoardService, private listActions: ListActions) { }
+    constructor(private ngRedux: NgRedux<IAppState>, private boardService: BoardService, 
+        private listActions: ListActions, private teamActions: TeamAction) { }
 
     get(id) {
         this.boardService.get(id).subscribe((board: any) => {
@@ -23,6 +25,12 @@ export class BoardActions {
                 this.listActions.get(list._id, list.position);
             }
         });
-
     }
+
+    post(board) {
+        this.boardService.post(board).subscribe((r: any) => {
+            this.teamActions.get();
+        });
+    }
+
 }

@@ -3,11 +3,19 @@
 <div class="team-container">
   <div *ngIf="team$ | async as teams">
     <div *ngFor="let team of teams; let listIndex = index" class="team">
-      <h2>{{team.name}}</h2>
+      <h2>
+        <span>{{team.name}}</span>
+        <button (click)="openBoardModal(team._id)">Create board...</button>
+      </h2>
 
       <div *ngFor="let board of team.boards;" class="board">
         <app-team-bard [board]="board"></app-team-bard>
       </div>
     </div>
+  </div>
+  <div class="team">
+    <h2>
+      <app-team-create></app-team-create>
+    </h2>
   </div>
 </div>
