@@ -1,130 +1,243 @@
 /* Bordered form */
+
 form {
-    border: 3px solid #f1f1f1;
+  border: 3px solid #f1f1f1;
 }
 
 /* Full-width inputs */
-input[type=text], input[type=password] {
-    width: 100%;
-    padding: 12px 20px;
-    margin: 8px 0;
-    display: inline-block;
-    border: 1px solid #ccc;
-    box-sizing: border-box;
+
+input[type=text],
+input[type=password] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
 }
 
 /* Set a style for all buttons */
+
 button {
-    background-color: #4CAF50;
-    color: white;
-    padding: 14px 20px;
-    margin: 8px 0;
-    border: none;
-    cursor: pointer;
-    width: 100%;
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
 }
 
 /* Add a hover effect for buttons */
+
 button:hover {
-    opacity: 0.8;
+  opacity: 0.8;
 }
 
 /* Extra style for the cancel button (red) */
+
 .cancelbtn {
-    width: 100%;
-    padding: 10px 18px;
-    background-color: #f44336;
+  width: 100%;
+  padding: 10px 18px;
+  background-color: #f44336;
 }
 
 /* Center the avatar image inside this container */
+
 .imgcontainer {
-    text-align: center;
-    margin: 12px 0 12px 0;
-     width: 100%;
+  text-align: center;
+  margin: 12px 0 12px 0;
+  width: 100%;
 }
 
 /* Avatar image */
+
 img.avatar {
-    width: 20%;
-    border-radius: 50%;
+  width: 20%;
+  border-radius: 50%;
 }
 
 /* Add padding to containers */
+
 .container {
-    padding: 16px;
+  padding: 16px;
 }
 
 /* The "Forgot password" text */
+
 span.psw {
-    float: right;
-    padding-top: 16px;
+  float: right;
+  padding-top: 16px;
 }
 
 /* Change styles for span and cancel button on extra small screens */
+
 @media screen and (max-width: 300px) {
-    span.psw {
-        display: block;
-        float: none;
-    }
-    .cancelbtn {
-        width: 100%;
-    }
+  span.psw {
+    display: block;
+    float: none;
+  }
+  .cancelbtn {
+    width: 100%;
+  }
 }
 
-
 /* The Modal (background) */
+
 .modal {
-    display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
-    left: 0;
-    top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-    padding-top: 60px;
+  display: none;
+  /* Hidden by default */
+  position: fixed;
+  /* Stay in place */
+  z-index: 1;
+  /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%;
+  /* Full width */
+  height: 100%;
+  /* Full height */
+  overflow: auto;
+  /* Enable scroll if needed */
+  background-color: rgb(0, 0, 0);
+  /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4);
+  /* Black w/ opacity */
+  padding-top: 60px;
 }
 
 /* Modal Content/Box */
+
 .modal-content {
-    background-color: #fefefe;
-    margin: 5px auto; /* 15% from the top and centered */
-    border: 1px solid #888;
-    width: 50%; /* Could be more or less, depending on screen size */
+  background-color: #fefefe;
+  margin: 5px auto;
+  /* 15% from the top and centered */
+  border: 1px solid #888;
+  width: 50%;
+  /* Could be more or less, depending on screen size */
 }
 
 /* The Close Button */
+
 .close {
-    /* Position it in the top right corner outside of the modal */
-    position: absolute;
-    right: 25px;
-    top: 0; 
-    color: #000;
-    font-size: 35px;
-    font-weight: bold;
+  /* Position it in the top right corner outside of the modal */
+  position: absolute;
+  right: 25px;
+  top: 0;
+  color: #000;
+  font-size: 35px;
+  font-weight: bold;
 }
 
 /* Close button on hover */
+
 .close:hover,
 .close:focus {
-    color: red;
-    cursor: pointer;
+  color: red;
+  cursor: pointer;
 }
 
 /* Add Zoom Animation */
+
 .animate {
-    -webkit-animation: animatezoom 0.6s;
-    animation: animatezoom 0.6s
+  -webkit-animation: animatezoom 0.6s;
+  animation: animatezoom 0.6s
 }
 
 @-webkit-keyframes animatezoom {
-    from {-webkit-transform: scale(0)} 
-    to {-webkit-transform: scale(1)}
+  from {
+    -webkit-transform: scale(0)
+  }
+  to {
+    -webkit-transform: scale(1)
+  }
 }
 
 @keyframes animatezoom {
-    from {transform: scale(0)} 
-    to {transform: scale(1)}
+  from {
+    transform: scale(0)
+  }
+  to {
+    transform: scale(1)
+  }
+}
+
+.home-container {
+  overflow-x: hidden !important;
+}
+
+.top-menu-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 40px;
+  overflow: hidden !important;
+}
+
+.top-menu {
+  height: 40px;
+  background-color: rgb(2, 106, 167, 0.6);
+  padding-right: 20px;
+}
+
+.top-menu button {
+  display: inline-block !important;
+  width: 130px;
+  height: 36px;
+  float: right;
+  margin-top: 2px !important;
+  margin-right: 20px;
+  padding: 5px !important;
+  font-weight: bold;
+}
+
+.top-menu button.blue {
+  background-color: #4e97c2;
+}
+
+.center {
+  position: absolute;
+  width: 120px;
+  top: 5px;
+  left: calc(50% - 73px);
+  text-align: center;
+}
+
+.center a {
+  color: #cce1ed;
+  font-size: 20px;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.center a:hover {
+  color: #dcf1fd;
+}
+
+.content {
+  position: absolute;
+  top: 700px;
+  left: 10px;
+  right: 10px;
+  background-color: #f5f5f5;
+  padding: 40px;
+  border-radius: 4px;
+  box-shadow: 0 -2px 11px 2px #000;
+  color: #333;
+}
+
+.description {
+  position: absolute;
+  top: 150px;
+  width: 690px;
+  text-align: center;
+  left: calc(50% - 345px);
+  color: #f5f5f5;
+  font-size: 26pt;
+}
+
+.description h1 {
+  font-weight: bold;
+  text-shadow: -2px 0px black, 0 2px black, 2px 0 black, 0 -2px black;
 }
