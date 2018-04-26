@@ -30,6 +30,10 @@ export class CardService {
     return this.httpClient.put(`${this.apiRoot}/description/${card._id}`, card);
   }
 
+  changeDueDate(card) {
+    return this.httpClient.put(`${this.apiRoot}/duedate/${card._id}`, card);
+  }
+
   delete(card) {
     return this.httpClient.delete(`${this.apiRoot}/${card._id}`, httpOptions);
   }

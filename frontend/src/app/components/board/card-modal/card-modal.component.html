@@ -5,7 +5,10 @@
   </h1>
   <div mat-dialog-content>
     <div class="col-80">
-      <app-card-modal-members [card]="card"></app-card-modal-members>
+      <div>
+        <app-card-modal-members [card]="card" class="inline-block members"></app-card-modal-members>
+        <app-card-modal-due [card]="card" class="inline-block"></app-card-modal-due>
+      </div>
       <app-card-modal-description [card]="card"></app-card-modal-description>
     </div>
     <div class="col-20">
