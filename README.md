@@ -19,7 +19,7 @@
 * Used redux in the entire angular applications
 * Hosted everything on Heroku and mLab
 
-###Project Access:
+### Project Access:
 * Project Repo: https://github.com/xtrememind/Boards.js
 * Running app: https://boardjsweb.herokuapp.com/
 * Api: https://boardsjs.herokuapp.com/
